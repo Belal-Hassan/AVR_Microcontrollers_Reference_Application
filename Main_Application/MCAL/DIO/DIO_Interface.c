@@ -192,6 +192,46 @@ void DIO_SetPortValue(port Port, status Status)
 		break;
 	}
 }
+void DIO_WritePortDirection(port Port, u8 Status)
+{
+	switch(Port)
+	{
+		case DIO_PORTA:
+		DDRA = Status;
+		break;
+		case DIO_PORTB:
+		DDRB = Status;
+		break;
+		case DIO_PORTC:
+		DDRC = Status;
+		break;
+		case DIO_PORTD:
+		DDRD = Status;
+		break;
+		default:
+		break;
+	}
+}
+void DIO_WritePortValue(port Port, u8 Status)
+{
+	switch(Port)
+	{
+		case DIO_PORTA:
+		PORTA = Status;
+		break;
+		case DIO_PORTB:
+		PORTB = Status;
+		break;
+		case DIO_PORTC:
+		PORTC = Status;
+		break;
+		case DIO_PORTD:
+		PORTD = Status;
+		break;
+		default:
+		break;
+	}
+}
 void DIO_TogglePortValue(port Port)
 {
 	switch(Port)

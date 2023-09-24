@@ -107,8 +107,6 @@
       <Value>../HAL/IO/Buttons/Button2</Value>
       <Value>../HAL/IO/Buzzer</Value>
       <Value>../HAL/IO/Display/LCD</Value>
-      <Value>../HAL/IO/Display/Segments/Segment0</Value>
-      <Value>../HAL/IO/Display/Segments/Segment1</Value>
       <Value>../HAL/IO/Keypad</Value>
       <Value>../HAL/IO/LEDs/LED0</Value>
       <Value>../HAL/IO/LEDs/LED1</Value>
@@ -126,6 +124,10 @@
       <Value>../MCAL/DIO</Value>
       <Value>../MCAL/Interrupt</Value>
       <Value>../MCAL/Timer</Value>
+      <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD</Value>
+      <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode</Value>
+      <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode</Value>
+      <Value>../HAL/IO/Display/Segments/SevenSegment</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -159,9 +161,10 @@
     <Folder Include="HAL\IO\Buttons\Button2" />
     <Folder Include="HAL\IO\Display\LCD\" />
     <Folder Include="HAL\IO\Display\Segments\" />
-    <Folder Include="HAL\IO\Display\Segments\Segment1" />
-    <Folder Include="HAL\IO\Display\Segments\Segment0" />
-    <Folder Include="HAL\IO\LEDs" />
+    <Folder Include="HAL\IO\Display\Segments\SevenSegment" />
+    <Folder Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Anode" />
+    <Folder Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Cathode" />
+    <Folder Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_BCD" />
     <Folder Include="HAL\IO\LEDs\LED0" />
     <Folder Include="HAL\IO\LEDs\LED1" />
     <Folder Include="HAL\IO\LEDs\LED2" />
@@ -173,6 +176,7 @@
     <Folder Include="HAL\IO\Buttons" />
     <Folder Include="HAL\IO\Display" />
     <Folder Include="HAL\IO\Keypad" />
+    <Folder Include="HAL\IO\LEDs" />
     <Folder Include="HAL\IO\Relay" />
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
@@ -200,10 +204,40 @@
     <Compile Include="HAL\IO\Buzzer\Buzzer_Configuration.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\IO\Buzzer\Buzzer_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\IO\Buzzer\Buzzer_Interface.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\IO\Buzzer\Buzzer_Private.h">
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Anode\SevenSegment_Anode_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Anode\SevenSegment_Anode_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Anode\SevenSegment_Anode_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_BCD\SevenSegment_BCD_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_BCD\SevenSegment_BCD_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_BCD\SevenSegment_BCD_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Cathode\SevenSegment_Cathode_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Cathode\SevenSegment_Cathode_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Cathode\SevenSegment_Cathode_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\IO\LEDs\LED0\LED0_Configuration.h">
@@ -233,10 +267,10 @@
     <Compile Include="HAL\IO\LEDs\LED2\LED2_Private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\IO\Relay\Relay_Configuration.h">
+    <Compile Include="HAL\IO\Relay\Relay_Interface.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\IO\Relay\Relay_Interface.c">
+    <Compile Include="HAL\IO\Relay\Relay_Configuration.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\IO\Relay\Relay_Private.h">

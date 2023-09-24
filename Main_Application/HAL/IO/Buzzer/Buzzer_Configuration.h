@@ -6,15 +6,15 @@
  */ 
 
 
-#ifndef Buzzer_CONFIGURATION_H_
-#define Buzzer_CONFIGURATION_H_
+#ifndef BUZZER_CONFIGURATION_H_
+#define BUZZER_CONFIGURATION_H_
 
 #include <Peripheral_Libraries.h>
 
-#define Buzzer DIO_PIN2
-#define Buzzer_PORT DIO_PORTC
-#define Buzzer_Output DIO_Output
-#define Buzzer_Low DIO_Low
-#define Buzzer_High DIO_High
+#define Buzzer			DIO_PIN3
+#define Buzzer_PORT		DIO_PORTA
+#define Buzzer_Output	DIO_Output
+#define Buzzer_Low		DIO_Low
+#define Buzzer_High		DIO_High
 
-#endif /* Buzzer_CONFIGURATION_H_ */
+#endif /* BUZZER_CONFIGURATION_H_ */

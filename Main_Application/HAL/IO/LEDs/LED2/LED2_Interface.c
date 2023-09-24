@@ -6,19 +6,27 @@
  */ 
 #include <LED2_Private.h>
 
-void LED2_Init(void)
+void LED2_Initialize(void)
 {
-	DIO_SetPinDirection(LED2_PORT, LED2, LED2_Output);
+	static bool Initialized = false;
+	if(!Initialized)
+	{
+		DIO_SetPinDirection(LED2_PORT, LED2, LED2_Output);
+		Initialized = true;
+	}
 }
-void LED2_ON(void)
+void LED2_On(void)
 {
+	LED2_Initialize();
 	DIO_SetPinValue(LED2_PORT, LED2, LED2_High);
 }
-void LED2_OFF(void)
+void LED2_Off(void)
 {
+	LED2_Initialize();
 	DIO_SetPinValue(LED2_PORT, LED2, LED2_Low);
 }
-void LED2_TGL(void)
+void LED2_Toggle(void)
 {
+	LED2_Initialize();
 	DIO_TogglePinValue(LED2_PORT, LED2);
 }

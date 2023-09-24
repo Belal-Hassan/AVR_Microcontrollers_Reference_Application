@@ -6,19 +6,27 @@
  */ 
 #include <Relay_Private.h>
 
-void Relay_Init(void)
+void Relay_Initialize(void)
 {
-	DIO_SetPinDirection(Relay_PORT, Relay, Relay_Output);
+	static bool Initialized = false;
+	if(!Initialized)
+	{
+		DIO_SetPinDirection(Relay_PORT, Relay, Relay_Output);
+		Initialized = true;
+	}
 }
-void Relay_ON(void)
+void Relay_On(void)
 {
+	Relay_Initialize();
 	DIO_SetPinValue(Relay_PORT, Relay, Relay_High);
 }
-void Relay_OFF(void)
+void Relay_Off(void)
 {
+	Relay_Initialize();
 	DIO_SetPinValue(Relay_PORT, Relay, Relay_Low);
 }
-void Relay_TGL(void)
+void Relay_Toggle(void)
 {
+	Relay_Initialize();
 	DIO_TogglePinValue(Relay_PORT, Relay);
 }

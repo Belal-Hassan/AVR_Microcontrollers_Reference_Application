@@ -6,19 +6,27 @@
  */ 
 #include <Buzzer_Private.h>
 
-void Buzzer_Init(void)
+void Buzzer_Initialize(void)
 {
-	DIO_SetPinDirection(Buzzer_PORT, Buzzer, Buzzer_Output);
+	static bool Initialized = false;
+	if(!Initialized)
+	{
+		DIO_SetPinDirection(Buzzer_PORT, Buzzer, Buzzer_Output);
+		Initialized = true;
+	}
 }
-void Buzzer_ON(void)
+void Buzzer_On(void)
 {
+	Buzzer_Initialize();
 	DIO_SetPinValue(Buzzer_PORT, Buzzer, Buzzer_High);
 }
-void Buzzer_OFF(void)
+void Buzzer_Off(void)
 {
+	Buzzer_Initialize();
 	DIO_SetPinValue(Buzzer_PORT, Buzzer, Buzzer_Low);
 }
-void Buzzer_TGL(void)
+void Buzzer_Toggle(void)
 {
+	Buzzer_Initialize();
 	DIO_TogglePinValue(Buzzer_PORT, Buzzer);
 }

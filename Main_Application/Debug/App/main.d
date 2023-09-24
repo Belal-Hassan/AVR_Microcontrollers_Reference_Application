@@ -2,7 +2,6 @@ App/main.d App/main.o: ../App/main.c ../App/main.h \
  ../MCAL/Configuration/Peripheral_Libraries.h \
  ../MCAL/Configuration/Bit_Math.h ../MCAL/Configuration/STD_Types.h \
  ../MCAL/Configuration/CPU_Configuration.h \
- ../MCAL/Configuration/STD_Types.h ../MCAL/Configuration/Bit_Math.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -14,6 +13,7 @@ App/main.d App/main.o: ../App/main.c ../App/main.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
@@ -27,7 +27,10 @@ App/main.d App/main.o: ../App/main.c ../App/main.h \
  ../HAL/IO/LEDs/LED2/LED2_Private.h \
  ../HAL/IO/LEDs/LED2/LED2_Configuration.h ../HAL/IO/Relay/Relay_Private.h \
  ../HAL/IO/Relay/Relay_Configuration.h ../HAL/IO/Buzzer/Buzzer_Private.h \
- ../HAL/IO/Buzzer/Buzzer_Configuration.h
+ ../HAL/IO/Buzzer/Buzzer_Configuration.h \
+ ../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Private.h \
+ ../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Private.h \
+ ../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Configuration.h
 
 ../App/main.h:
 
@@ -38,10 +41,6 @@ App/main.d App/main.o: ../App/main.c ../App/main.h \
 ../MCAL/Configuration/STD_Types.h:
 
 ../MCAL/Configuration/CPU_Configuration.h:
-
-../MCAL/Configuration/STD_Types.h:
-
-../MCAL/Configuration/Bit_Math.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -64,6 +63,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
@@ -98,3 +99,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../HAL/IO/Buzzer/Buzzer_Private.h:
 
 ../HAL/IO/Buzzer/Buzzer_Configuration.h:
+
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Private.h:
+
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Private.h:
+
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Configuration.h:

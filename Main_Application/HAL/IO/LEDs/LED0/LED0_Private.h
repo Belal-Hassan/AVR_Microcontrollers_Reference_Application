@@ -11,9 +11,9 @@
 
 #include <LED0_Configuration.h>
 
-void LED0_Init(void);
-void LED0_ON(void);
-void LED0_OFF(void);
-void LED0_TGL(void);
+void LED0_Initialize(void);
+void LED0_On(void);
+void LED0_Off(void);
+void LED0_Toggle(void);
 
 #endif /* LED0_PRIVATE_H_ */

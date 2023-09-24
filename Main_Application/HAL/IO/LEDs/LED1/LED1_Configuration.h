@@ -11,10 +11,10 @@
 
 #include <Peripheral_Libraries.h>
 
-#define LED1 DIO_PIN2
-#define LED1_PORT DIO_PORTC
-#define LED1_Output DIO_Output
-#define LED1_Low DIO_Low
-#define LED1_High DIO_High
+#define LED1			DIO_PIN7
+#define LED1_PORT		DIO_PORTC
+#define LED1_Output	DIO_Output
+#define LED1_Low		DIO_Low
+#define LED1_High		DIO_High
 
 #endif /* LED1_CONFIGURATION_H_ */

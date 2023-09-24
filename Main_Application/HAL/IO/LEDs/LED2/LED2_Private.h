@@ -11,9 +11,9 @@
 
 #include <LED2_Configuration.h>
 
-void LED2_Init(void);
-void LED2_ON(void);
-void LED2_OFF(void);
-void LED2_TGL(void);
+void LED2_Initialize(void);
+void LED2_On(void);
+void LED2_Off(void);
+void LED2_Toggle(void);
 
 #endif /* LED2_PRIVATE_H_ */

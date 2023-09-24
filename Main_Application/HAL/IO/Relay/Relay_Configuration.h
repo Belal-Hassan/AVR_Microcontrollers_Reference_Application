@@ -6,15 +6,15 @@
  */ 
 
 
-#ifndef Relay_CONFIGURATION_H_
-#define Relay_CONFIGURATION_H_
+#ifndef RELAY_CONFIGURATION_H_
+#define RELAY_CONFIGURATION_H_
 
 #include <Peripheral_Libraries.h>
 
-#define Relay DIO_PIN2
-#define Relay_PORT DIO_PORTC
-#define Relay_Output DIO_Output
-#define Relay_Low DIO_Low
-#define Relay_High DIO_High
+#define Relay			DIO_PIN2
+#define Relay_PORT		DIO_PORTA
+#define Relay_Output	DIO_Output
+#define Relay_Low		DIO_Low
+#define Relay_High		DIO_High
 
-#endif /* Relay_CONFIGURATION_H_ */
+#endif /* RELAY_CONFIGURATION_H_ */

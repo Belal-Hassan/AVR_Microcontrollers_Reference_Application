@@ -20,6 +20,8 @@ void DIO_SetPinPullUp(port Port, pin Pin);
 /*--------------------PORTS--------------------*/
 void DIO_SetPortDirection(port Port, state State);
 void DIO_SetPortValue(port Port, status Status);
+void DIO_WritePortDirection(port Port, u8 Status);
+void DIO_WritePortValue(port Port, u8 Status);
 void DIO_TogglePortValue(port Port);
 u8 DIO_GetPortValue(port Port);
 void DIO_SetPortPullUp(port);

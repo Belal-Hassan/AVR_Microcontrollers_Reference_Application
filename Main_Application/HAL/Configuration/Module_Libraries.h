@@ -14,5 +14,6 @@
 #include <LED2_Private.h>
 #include <Relay_Private.h>
 #include <Buzzer_Private.h>
+#include <SevenSegment_Private.h>
 
 #endif /* MODULE_LIBRARIES_H_ */

@@ -6,14 +6,14 @@
  */ 
 
 
-#ifndef Buzzer_PRIVATE_H_
-#define Buzzer_PRIVATE_H_
+#ifndef BUZZER_PRIVATE_H_
+#define BUZZER_PRIVATE_H_
 
 #include <Buzzer_Configuration.h>
 
-void Buzzer_Init(void);
-void Buzzer_ON(void);
-void Buzzer_OFF(void);
-void Buzzer_TGL(void);
+void Buzzer_Initialize(void);
+void Buzzer_On(void);
+void Buzzer_Off(void);
+void Buzzer_Toggle(void);
 
-#endif /* Buzzer_PRIVATE_H_ */
+#endif /* BUZZER_PRIVATE_H_ */

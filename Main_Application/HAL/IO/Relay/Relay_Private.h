@@ -6,14 +6,14 @@
  */ 
 
 
-#ifndef Relay_PRIVATE_H_
-#define Relay_PRIVATE_H_
+#ifndef RELAY_PRIVATE_H_
+#define RELAY_PRIVATE_H_
 
 #include <Relay_Configuration.h>
 
-void Relay_Init(void);
-void Relay_ON(void);
-void Relay_OFF(void);
-void Relay_TGL(void);
+void Relay_Initialize(void);
+void Relay_On(void);
+void Relay_Off(void);
+void Relay_Toggle(void);
 
-#endif /* Relay_PRIVATE_H_ */
+#endif /* RELAY_PRIVATE_H_ */

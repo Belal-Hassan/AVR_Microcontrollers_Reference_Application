@@ -44,9 +44,10 @@ SUBDIRS :=  \
 ../HAL/IO/Buttons/Button2 \
 ../HAL/IO/Display/LCD/ \
 ../HAL/IO/Display/Segments/ \
-../HAL/IO/Display/Segments/Segment1 \
-../HAL/IO/Display/Segments/Segment0 \
-../HAL/IO/LEDs \
+../HAL/IO/Display/Segments/SevenSegment \
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode \
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode \
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD \
 ../HAL/IO/LEDs/LED0 \
 ../HAL/IO/LEDs/LED1 \
 ../HAL/IO/LEDs/LED2 \
@@ -58,6 +59,7 @@ SUBDIRS :=  \
 ../HAL/IO/Buttons \
 ../HAL/IO/Display \
 ../HAL/IO/Keypad \
+../HAL/IO/LEDs \
 ../HAL/IO/Relay \
 ../MCAL \
 ../HAL \
@@ -77,6 +79,9 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../App/main.c \
 ../HAL/IO/Buzzer/Buzzer_Interface.c \
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode/SevenSegment_Anode_Interface.c \
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Interface.c \
+../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_Interface.c \
 ../HAL/IO/LEDs/LED0/LED0_Interface.c \
 ../HAL/IO/LEDs/LED1/LED1_Interface.c \
 ../HAL/IO/LEDs/LED2/LED2_Interface.c \
@@ -93,6 +98,9 @@ ASM_SRCS +=
 OBJS +=  \
 App/main.o \
 HAL/IO/Buzzer/Buzzer_Interface.o \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode/SevenSegment_Anode_Interface.o \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Interface.o \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_Interface.o \
 HAL/IO/LEDs/LED0/LED0_Interface.o \
 HAL/IO/LEDs/LED1/LED1_Interface.o \
 HAL/IO/LEDs/LED2/LED2_Interface.o \
@@ -102,6 +110,9 @@ MCAL/DIO/DIO_Interface.o
 OBJS_AS_ARGS +=  \
 App/main.o \
 HAL/IO/Buzzer/Buzzer_Interface.o \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode/SevenSegment_Anode_Interface.o \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Interface.o \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_Interface.o \
 HAL/IO/LEDs/LED0/LED0_Interface.o \
 HAL/IO/LEDs/LED1/LED1_Interface.o \
 HAL/IO/LEDs/LED2/LED2_Interface.o \
@@ -111,6 +122,9 @@ MCAL/DIO/DIO_Interface.o
 C_DEPS +=  \
 App/main.d \
 HAL/IO/Buzzer/Buzzer_Interface.d \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode/SevenSegment_Anode_Interface.d \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Interface.d \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_Interface.d \
 HAL/IO/LEDs/LED0/LED0_Interface.d \
 HAL/IO/LEDs/LED1/LED1_Interface.d \
 HAL/IO/LEDs/LED2/LED2_Interface.d \
@@ -120,6 +134,9 @@ MCAL/DIO/DIO_Interface.d
 C_DEPS_AS_ARGS +=  \
 App/main.d \
 HAL/IO/Buzzer/Buzzer_Interface.d \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode/SevenSegment_Anode_Interface.d \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Interface.d \
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_Interface.d \
 HAL/IO/LEDs/LED0/LED0_Interface.d \
 HAL/IO/LEDs/LED1/LED1_Interface.d \
 HAL/IO/LEDs/LED2/LED2_Interface.d \
@@ -143,49 +160,70 @@ LINKER_SCRIPT_DEP+=
 App/main.o: ../App/main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Display/Segments/Segment0" -I"../HAL/IO/Display/Segments/Segment1" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/IO/Buzzer/Buzzer_Interface.o: ../HAL/IO/Buzzer/Buzzer_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Display/Segments/Segment0" -I"../HAL/IO/Display/Segments/Segment1" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode/SevenSegment_Anode_Interface.o: ../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode/SevenSegment_Anode_Interface.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Interface.o: ../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD/SevenSegment_BCD_Interface.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_Interface.o: ../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_Interface.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/IO/LEDs/LED0/LED0_Interface.o: ../HAL/IO/LEDs/LED0/LED0_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Display/Segments/Segment0" -I"../HAL/IO/Display/Segments/Segment1" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/IO/LEDs/LED1/LED1_Interface.o: ../HAL/IO/LEDs/LED1/LED1_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Display/Segments/Segment0" -I"../HAL/IO/Display/Segments/Segment1" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/IO/LEDs/LED2/LED2_Interface.o: ../HAL/IO/LEDs/LED2/LED2_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Display/Segments/Segment0" -I"../HAL/IO/Display/Segments/Segment1" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/IO/Relay/Relay_Interface.o: ../HAL/IO/Relay/Relay_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Display/Segments/Segment0" -I"../HAL/IO/Display/Segments/Segment1" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/DIO/DIO_Interface.o: ../MCAL/DIO/DIO_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Display/Segments/Segment0" -I"../HAL/IO/Display/Segments/Segment1" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
