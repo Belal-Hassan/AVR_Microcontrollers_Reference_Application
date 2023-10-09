@@ -6,7 +6,7 @@
  */ 
 #include <SevenSegment_Private.h>
 
-#ifdef _SEVENSEGMENT_CATHODE_
+#if _SEVENSEGMENT_TYPE_ == _SEVENSEGMENT_CATHODE_
 void SevenSegment_Initialize(void)
 {
 	static bool Initialized = false; 

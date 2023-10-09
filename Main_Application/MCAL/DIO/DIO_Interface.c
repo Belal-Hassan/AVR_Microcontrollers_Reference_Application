@@ -192,41 +192,67 @@ void DIO_SetPortValue(port Port, status Status)
 		break;
 	}
 }
-void DIO_WritePortDirection(port Port, u8 Status)
+void DIO_WritePortDirection(port Port, pin StartPin, pin EndPin, u8 Data)
 {
+	u8 Mask = ((1 << (EndPin - StartPin + 1)) - 1) << StartPin, PlaceHolder;
 	switch(Port)
 	{
 		case DIO_PORTA:
-		DDRA = Status;
+		PlaceHolder = DDRA;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		DDRA = PlaceHolder;
 		break;
 		case DIO_PORTB:
-		DDRB = Status;
+		PlaceHolder = DDRB;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		DDRB = PlaceHolder;
 		break;
 		case DIO_PORTC:
-		DDRC = Status;
+		PlaceHolder = DDRC;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		DDRC = PlaceHolder;
 		break;
 		case DIO_PORTD:
-		DDRD = Status;
+		PlaceHolder = DDRD;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		DDRD = PlaceHolder;
 		break;
 		default:
 		break;
 	}
 }
-void DIO_WritePortValue(port Port, u8 Status)
+void DIO_WritePortValue(port Port, pin StartPin, pin EndPin, u8 Data)
 {
+	u8 Mask = ((1 << (EndPin - StartPin + 1)) - 1) << StartPin, PlaceHolder;
 	switch(Port)
 	{
 		case DIO_PORTA:
-		PORTA = Status;
+		PlaceHolder = PORTA;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		PORTA = PlaceHolder;
 		break;
 		case DIO_PORTB:
-		PORTB = Status;
+		PlaceHolder = PORTB;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		PORTB = PlaceHolder;
 		break;
 		case DIO_PORTC:
-		PORTC = Status;
+		PlaceHolder = PORTC;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		PORTC = PlaceHolder;
 		break;
 		case DIO_PORTD:
-		PORTD = Status;
+		PlaceHolder = PORTD;
+		PlaceHolder &= ~Mask;
+		PlaceHolder |= Data & Mask;
+		PORTD = PlaceHolder;
 		break;
 		default:
 		break;

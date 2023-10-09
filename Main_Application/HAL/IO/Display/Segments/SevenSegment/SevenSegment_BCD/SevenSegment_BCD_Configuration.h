@@ -24,8 +24,8 @@
 #define SevenSegment_PIN_D					DIO_PIN7
 // Renaming States
 #define SevenSegment_Output					DIO_Output
-#define SevenSegment_Control_PORT_Direction 0b00001110
-#define SevenSegment_Data_PORT_Direction	0b11110000
+#define SevenSegment_Control_PORT_Output	0b00001110
+#define SevenSegment_Data_PORT_Output		0b11110000
 // Renaming Status 
 #define SevenSegment_High					DIO_High
 #define SevenSegment_Low					DIO_Low

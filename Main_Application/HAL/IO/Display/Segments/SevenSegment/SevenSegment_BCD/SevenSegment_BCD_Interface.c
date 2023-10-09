@@ -6,14 +6,14 @@
  */
 #include <SevenSegment_Private.h>
 
-#ifdef _SEVENSEGMENT_BCD_
+#if _SEVENSEGMENT_TYPE_ == _SEVENSEGMENT_BCD_
 void SevenSegment_Initialize(void)
 {
 	static bool Initialized = false;
 	if(!Initialized)
 	{
-		DIO_WritePortDirection(SevenSegment_Control_PORT, SevenSegment_Control_PORT_Direction);
-		DIO_WritePortDirection(SevenSegment_Data_PORT, SevenSegment_Data_PORT_Direction);
+		DIO_WritePortDirection(SevenSegment_Control_PORT, SevenSegment_Enable_1_PIN, SevenSegment_Enable_DP_PIN, SevenSegment_Control_PORT_Output);
+		DIO_WritePortDirection(SevenSegment_Data_PORT, SevenSegment_PIN_A, SevenSegment_PIN_D, SevenSegment_Data_PORT_Output);
 		Initialized = true;
 	}
 }
@@ -52,11 +52,11 @@ void SevenSegment_Display_Number(u8 number)
 	SevenSegment_Initialize();
 	u8 units = (number % 10) << 4;
 	u8 tenth = (number / 10) << 4;
-	DIO_WritePortValue(SevenSegment_Data_PORT, units);
+	DIO_WritePortValue(SevenSegment_Data_PORT, SevenSegment_PIN_A, SevenSegment_PIN_D, units);
 	SevenSegment_Enable_1();
 	SevenSegment_Disable_2();
 	_delay_ms(5);
-	DIO_WritePortValue(SevenSegment_Data_PORT, tenth);
+	DIO_WritePortValue(SevenSegment_Data_PORT, SevenSegment_PIN_A, SevenSegment_PIN_D, tenth);
 	SevenSegment_Enable_2();
 	SevenSegment_Disable_1();
 	_delay_ms(5);
