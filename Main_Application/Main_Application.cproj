@@ -294,6 +294,15 @@
     <Compile Include="HAL\IO\Display\Segments\SevenSegment\SevenSegment_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\IO\Keypad\Keypad_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Keypad\Keypad_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Keypad\Keypad_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\IO\LEDs\LED0\LED0_Configuration.h">
       <SubType>compile</SubType>
     </Compile>
@@ -352,6 +361,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO\DIO_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Interrupt\Interrput_Addresses.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Interrupt\Interrupt_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Interrupt\Interrupt_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Interrupt\Interrupt_Private.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

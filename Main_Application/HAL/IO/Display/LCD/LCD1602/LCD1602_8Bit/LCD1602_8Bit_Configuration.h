@@ -28,7 +28,8 @@
 #define LCD1602_PIN_D7					DIO_PIN7
 // Renaming States
 #define LCD1602_Output					DIO_Output
-#define LCD1602_Control_PORT_Output		0b00001110
+#define LCD1602_Control_PORT_Output		0x0E
+#define LCD1602_Data_PORT_Output		0xFF
 // Renaming Status
 #define LCD1602_High					DIO_High
 #define LCD1602_Low						DIO_Low

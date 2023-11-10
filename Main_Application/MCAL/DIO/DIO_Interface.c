@@ -127,6 +127,39 @@ void DIO_SetPinPullUp(port Port, pin Pin)
 		break;
 	}
 }
+/*-------------------NIBBLES-------------------*/
+void DIO_SetNibbleDirection(port Port, nibble Nibble, state State)
+{
+	
+}
+void DIO_SetNibbleValue(port Port, nibble Nibble, status Status)
+{
+	
+}
+void DIO_WriteNibbleDirection(port Port, nibble Nibble, pin StartPin, pin EndPin, u8 Data)
+{
+	
+}
+void DIO_WriteNibbleValue(port Port, nibble Nibble, pin StartPin, pin EndPin, u8 Data)
+{
+	
+}
+void DIO_ToggleNibbleValue(port Port, nibble Nibble)
+{
+	
+}
+u8 DIO_GetNibbleValue(port Port, nibble Nibble)
+{
+	
+}
+void DIO_SetNibblePullUp(port Port, nibble Nibble)
+{
+	
+}
+void DIO_WriteNibblePullUp(port Port, nibble Nibble, pin StartPin, pin EndPin)
+{
+	
+}
 /*------------------------------PORTS------------------------------*/
 void DIO_SetPortDirection(port Port, state State)
 {
@@ -311,6 +344,27 @@ void DIO_SetPortPullUp(port Port)
 		break;
 		case DIO_PORTD:
 		PORTD = DIO_PORT_High;
+		break;
+		default:
+		break;
+	}
+}
+void DIO_WritePortPullUp(port Port, pin StartPin, pin EndPin)
+{
+	u8 Mask = ((1 << (EndPin - StartPin + 1)) - 1) << StartPin, PlaceHolder;
+	switch(Port)
+	{
+		case DIO_PORTA:
+		PORTA |= Mask;
+		break;
+		case DIO_PORTB:
+		PORTB |= Mask;
+		break;
+		case DIO_PORTC:
+		PORTC |= Mask;
+		break;
+		case DIO_PORTD:
+		PORTD |= Mask;
 		break;
 		default:
 		break;

@@ -23,6 +23,10 @@ void LCD_Send_Command(u8 Command)
 	DIO_WritePortValue(LCD_Data_PORT, LCD_PIN_D4, LCD_PIN_D7, ((Command & 0x0F) << 4));
 	LCD_Enable();
 	_delay_us(100);
+	if(Command == LCD_Command_IncrementCursor || Command == LCD_Command_DisplayLeft)
+		CursorDirection = false;
+	if(Command == LCD_Command_DecrementCursor || Command == LCD_Command_DisplayRight)
+		CursorDirection = true;
 }
 void LCD_HomeScreen(void)
 {
@@ -55,12 +59,12 @@ void LCD_Initialize(void)
 }
 void LCD_LineCheck(void)
 {
-	if(Character_Counter % 33 == 0)
+	if(Character_Counter % 32 == 0)
 	{
 		LCD_ClearScreen();
 		LCD_Send_Command(LCD_Command_1stLine);
 	}
-	else if(Character_Counter % 17 == 0)
+	else if(Character_Counter % 16 == 0)
 		LCD_Send_Command(LCD_Command_2ndLine);
 }
 void LCD_Display_Character(u8 Character)
@@ -75,7 +79,10 @@ void LCD_Display_Character(u8 Character)
 	DIO_WritePortValue(LCD_Data_PORT, LCD_PIN_D4, LCD_PIN_D7, ((Character & 0x0F) << 4));
 	LCD_Enable();
 	_delay_us(100);
-	Character_Counter++;
+	if(CursorDirection)
+		Character_Counter--;
+	else
+		Character_Counter++;
 }
 void LCD_Display_String(u8 String[])
 {
@@ -94,7 +101,7 @@ void LCD_Reverse_String(u8 String[], u8 Length)
 		String[Length--] = temp;
 	}
 }
-u8 LCD_IntToString(u64 Number, u8 String[], u8 Length)
+u8 LCD_IntToString(u32 Number, u8 String[], u8 Length)
 {
 	u8 Counter = 0;
 	while (Number)
@@ -108,7 +115,7 @@ u8 LCD_IntToString(u64 Number, u8 String[], u8 Length)
 	String[Counter] = '\0';
 	return Counter;
 }
-void LCD_Display_Number(u64 Number)
+void LCD_Display_Number(u32 Number)
 {
 	u8 String[33];
 	LCD_IntToString(Number, String, 0);

@@ -13,9 +13,11 @@
 #include <STD_Types.h>
 #include <CPU_Configuration.h>
 #include <DIO_Private.h>
+#include <Interrupt_Private.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 
 #endif /* PERIPHERAL_LIBRARIES_H_ */

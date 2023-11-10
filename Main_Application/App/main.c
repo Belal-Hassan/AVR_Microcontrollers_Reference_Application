@@ -8,27 +8,26 @@
 
 int main(void)
 {
-	u8 Heart[] = {
-		0b00000,
-		0b01010,
-		0b10101,
-		0b10001,
-		0b01010,
-		0b00100,
-		0b00000,
-		0b00000
-	};
 	LCD_Initialize();
-	LCD_Display_String("After ");
-	LCD_Display_FloatNumber(7393.97, 2);
-	LCD_Display_Location(0, 1);
-	LCD_Display_String("tries,I did it!");
-	while (1)
+	External_Interrupt_Initialize(Interrupt1, Interrupt_Rising);
+	while(1)
 	{
-		LCD_Send_Command(LCD_Command_DisplayRight);
-		_delay_ms(10);
-		LCD_Send_Command(LCD_Command_DisplayLeft);
-		_delay_ms(10);
+		for(u8 y = 'A'; y <= 'Z'; y++)
+		{
+			LCD_Display_Character(y);
+			_delay_ms(10);
+		}
+		LCD_ClearScreen();
 	}
 }
 
+ISR(INT1_vect)
+{
+	LCD_ClearScreen();
+	for(u8 x = 'a'; x <= 'z'; x++)
+	{
+		LCD_Display_Character(x);
+		_delay_ms(10);
+	}
+	LCD_ClearScreen();
+}

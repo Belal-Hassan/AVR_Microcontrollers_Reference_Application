@@ -22,6 +22,12 @@ typedef enum
 
 typedef enum
 {
+	DIO_Nibble0 = 0,
+	DIO_Nibble1
+}nibble;
+
+typedef enum
+{
 	DIO_PIN0 = 0,
 	DIO_PIN1,
 	DIO_PIN2,

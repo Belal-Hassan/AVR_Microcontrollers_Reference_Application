@@ -16,5 +16,6 @@
 #include <Buzzer_Private.h>
 #include <SevenSegment_Private.h>
 #include <LCD1602_Private.h>
+#include <Keypad_Private.h>
 
 #endif /* MODULE_LIBRARIES_H_ */

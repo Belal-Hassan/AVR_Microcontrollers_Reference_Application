@@ -24,6 +24,9 @@ HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode/SevenSegment_Cathode_I
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../MCAL/DIO/DIO_Private.h ../MCAL/DIO/DIO_Configuration.h \
+ ../MCAL/Interrupt/Interrupt_Private.h \
+ ../MCAL/Interrupt/Interrupt_Configuration.h \
+ ../MCAL/Interrupt/Interrput_Addresses.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
@@ -79,6 +82,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../MCAL/DIO/DIO_Private.h:
 
 ../MCAL/DIO/DIO_Configuration.h:
+
+../MCAL/Interrupt/Interrupt_Private.h:
+
+../MCAL/Interrupt/Interrupt_Configuration.h:
+
+../MCAL/Interrupt/Interrput_Addresses.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
