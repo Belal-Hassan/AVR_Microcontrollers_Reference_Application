@@ -9,25 +9,9 @@
 int main(void)
 {
 	LCD_Initialize();
-	External_Interrupt_Initialize(Interrupt1, Interrupt_Rising);
+	ADC_Initialize(ADC_AREF, ADC_PRE_128);
 	while(1)
 	{
-		for(u8 y = 'A'; y <= 'Z'; y++)
-		{
-			LCD_Display_Character(y);
-			_delay_ms(10);
-		}
-		LCD_ClearScreen();
+		
 	}
-}
-
-ISR(INT1_vect)
-{
-	LCD_ClearScreen();
-	for(u8 x = 'a'; x <= 'z'; x++)
-	{
-		LCD_Display_Character(x);
-		_delay_ms(10);
-	}
-	LCD_ClearScreen();
 }

@@ -1,9 +1,8 @@
-HAL/IO/Relay/Relay_Interface.d HAL/IO/Relay/Relay_Interface.o: \
- ../HAL/IO/Relay/Relay_Interface.c ../HAL/IO/Relay/Relay_Private.h \
- ../HAL/IO/Relay/Relay_Configuration.h \
- ../MCAL/Configuration/Peripheral_Libraries.h \
- ../MCAL/Configuration/Bit_Math.h ../MCAL/Configuration/STD_Types.h \
+MCAL/ADC/ADC_Interface.d MCAL/ADC/ADC_Interface.o: \
+ ../MCAL/ADC/ADC_Interface.c ../MCAL/ADC/ADC_Private.h \
+ ../MCAL/ADC/ADC_Configuration.h ../MCAL/ADC/ADC_Addresses.h \
  ../MCAL/Configuration/CPU_Configuration.h \
+ ../MCAL/Configuration/STD_Types.h ../MCAL/Configuration/Bit_Math.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -19,29 +18,19 @@ HAL/IO/Relay/Relay_Interface.d HAL/IO/Relay/Relay_Interface.o: \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../MCAL/DIO/DIO_Private.h ../MCAL/DIO/DIO_Configuration.h \
- ../MCAL/Interrupt/Interrupt_Private.h \
- ../MCAL/Interrupt/Interrupt_Configuration.h \
- ../MCAL/Interrupt/Interrput_Addresses.h ../MCAL/ADC/ADC_Private.h \
- ../MCAL/ADC/ADC_Configuration.h ../MCAL/ADC/ADC_Addresses.h \
- x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
- x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
- x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h
+ x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-../HAL/IO/Relay/Relay_Private.h:
+../MCAL/ADC/ADC_Private.h:
 
-../HAL/IO/Relay/Relay_Configuration.h:
+../MCAL/ADC/ADC_Configuration.h:
 
-../MCAL/Configuration/Peripheral_Libraries.h:
+../MCAL/ADC/ADC_Addresses.h:
 
-../MCAL/Configuration/Bit_Math.h:
+../MCAL/Configuration/CPU_Configuration.h:
 
 ../MCAL/Configuration/STD_Types.h:
 
-../MCAL/Configuration/CPU_Configuration.h:
+../MCAL/Configuration/Bit_Math.h:
 
 x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -74,29 +63,3 @@ x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-../MCAL/DIO/DIO_Private.h:
-
-../MCAL/DIO/DIO_Configuration.h:
-
-../MCAL/Interrupt/Interrupt_Private.h:
-
-../MCAL/Interrupt/Interrupt_Configuration.h:
-
-../MCAL/Interrupt/Interrput_Addresses.h:
-
-../MCAL/ADC/ADC_Private.h:
-
-../MCAL/ADC/ADC_Configuration.h:
-
-../MCAL/ADC/ADC_Addresses.h:
-
-x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
-
-x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
-
-x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
-
-x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
-
-x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:

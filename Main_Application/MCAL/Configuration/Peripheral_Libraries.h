@@ -14,6 +14,7 @@
 #include <CPU_Configuration.h>
 #include <DIO_Private.h>
 #include <Interrupt_Private.h>
+#include <ADC_Private.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

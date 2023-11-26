@@ -150,7 +150,7 @@ void DIO_ToggleNibbleValue(port Port, nibble Nibble)
 }
 u8 DIO_GetNibbleValue(port Port, nibble Nibble)
 {
-	
+
 }
 void DIO_SetNibblePullUp(port Port, nibble Nibble)
 {
@@ -351,7 +351,7 @@ void DIO_SetPortPullUp(port Port)
 }
 void DIO_WritePortPullUp(port Port, pin StartPin, pin EndPin)
 {
-	u8 Mask = ((1 << (EndPin - StartPin + 1)) - 1) << StartPin, PlaceHolder;
+	u8 Mask = ((1 << (EndPin - StartPin + 1)) - 1) << StartPin;
 	switch(Port)
 	{
 		case DIO_PORTA:
