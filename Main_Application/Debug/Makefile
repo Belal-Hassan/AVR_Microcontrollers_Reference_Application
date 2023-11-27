@@ -98,8 +98,11 @@ C_SRCS +=  \
 ../HAL/IO/LEDs/LED0/LED0_Interface.c \
 ../HAL/IO/LEDs/LED1/LED1_Interface.c \
 ../HAL/IO/LEDs/LED2/LED2_Interface.c \
+../HAL/IO/Motors/DC/DC_Interface.c \
 ../HAL/IO/Relay/Relay_Interface.c \
 ../MCAL/ADC/ADC_Interface.c \
+../MCAL/Communication/SPI/SPI_Interface.c \
+../MCAL/Communication/UART/UART_Interface.c \
 ../MCAL/DIO/DIO_Interface.c \
 ../MCAL/Interrupt/Interrupt_Interface.c \
 ../MCAL/Timers/Timer0/Timer0_Interface.c
@@ -126,8 +129,11 @@ HAL/IO/Keypad/Keypad_Interface.o \
 HAL/IO/LEDs/LED0/LED0_Interface.o \
 HAL/IO/LEDs/LED1/LED1_Interface.o \
 HAL/IO/LEDs/LED2/LED2_Interface.o \
+HAL/IO/Motors/DC/DC_Interface.o \
 HAL/IO/Relay/Relay_Interface.o \
 MCAL/ADC/ADC_Interface.o \
+MCAL/Communication/SPI/SPI_Interface.o \
+MCAL/Communication/UART/UART_Interface.o \
 MCAL/DIO/DIO_Interface.o \
 MCAL/Interrupt/Interrupt_Interface.o \
 MCAL/Timers/Timer0/Timer0_Interface.o
@@ -147,8 +153,11 @@ HAL/IO/Keypad/Keypad_Interface.o \
 HAL/IO/LEDs/LED0/LED0_Interface.o \
 HAL/IO/LEDs/LED1/LED1_Interface.o \
 HAL/IO/LEDs/LED2/LED2_Interface.o \
+HAL/IO/Motors/DC/DC_Interface.o \
 HAL/IO/Relay/Relay_Interface.o \
 MCAL/ADC/ADC_Interface.o \
+MCAL/Communication/SPI/SPI_Interface.o \
+MCAL/Communication/UART/UART_Interface.o \
 MCAL/DIO/DIO_Interface.o \
 MCAL/Interrupt/Interrupt_Interface.o \
 MCAL/Timers/Timer0/Timer0_Interface.o
@@ -168,8 +177,11 @@ HAL/IO/Keypad/Keypad_Interface.d \
 HAL/IO/LEDs/LED0/LED0_Interface.d \
 HAL/IO/LEDs/LED1/LED1_Interface.d \
 HAL/IO/LEDs/LED2/LED2_Interface.d \
+HAL/IO/Motors/DC/DC_Interface.d \
 HAL/IO/Relay/Relay_Interface.d \
 MCAL/ADC/ADC_Interface.d \
+MCAL/Communication/SPI/SPI_Interface.d \
+MCAL/Communication/UART/UART_Interface.d \
 MCAL/DIO/DIO_Interface.d \
 MCAL/Interrupt/Interrupt_Interface.d \
 MCAL/Timers/Timer0/Timer0_Interface.d
@@ -189,8 +201,11 @@ HAL/IO/Keypad/Keypad_Interface.d \
 HAL/IO/LEDs/LED0/LED0_Interface.d \
 HAL/IO/LEDs/LED1/LED1_Interface.d \
 HAL/IO/LEDs/LED2/LED2_Interface.d \
+HAL/IO/Motors/DC/DC_Interface.d \
 HAL/IO/Relay/Relay_Interface.d \
 MCAL/ADC/ADC_Interface.d \
+MCAL/Communication/SPI/SPI_Interface.d \
+MCAL/Communication/UART/UART_Interface.d \
 MCAL/DIO/DIO_Interface.d \
 MCAL/Interrupt/Interrupt_Interface.d \
 MCAL/Timers/Timer0/Timer0_Interface.d
@@ -307,6 +322,13 @@ HAL/IO/LEDs/LED2/LED2_Interface.o: ../HAL/IO/LEDs/LED2/LED2_Interface.c
 	@echo Finished building: $<
 	
 
+HAL/IO/Motors/DC/DC_Interface.o: ../HAL/IO/Motors/DC/DC_Interface.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)X:\Extracurriculars\Microchip Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment" -I"../HAL/IO/Display/LCD/LCD1602" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_4Bit" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_8Bit" -I"../MCAL/Timers/Timer0" -I"../MCAL/Timers/Timer1" -I"../MCAL/Timers/Timer2" -I"../MCAL/Timers/Watchdog"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 HAL/IO/Relay/Relay_Interface.o: ../HAL/IO/Relay/Relay_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -315,6 +337,20 @@ HAL/IO/Relay/Relay_Interface.o: ../HAL/IO/Relay/Relay_Interface.c
 	
 
 MCAL/ADC/ADC_Interface.o: ../MCAL/ADC/ADC_Interface.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)X:\Extracurriculars\Microchip Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment" -I"../HAL/IO/Display/LCD/LCD1602" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_4Bit" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_8Bit" -I"../MCAL/Timers/Timer0" -I"../MCAL/Timers/Timer1" -I"../MCAL/Timers/Timer2" -I"../MCAL/Timers/Watchdog"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/Communication/SPI/SPI_Interface.o: ../MCAL/Communication/SPI/SPI_Interface.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)X:\Extracurriculars\Microchip Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment" -I"../HAL/IO/Display/LCD/LCD1602" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_4Bit" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_8Bit" -I"../MCAL/Timers/Timer0" -I"../MCAL/Timers/Timer1" -I"../MCAL/Timers/Timer2" -I"../MCAL/Timers/Watchdog"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/Communication/UART/UART_Interface.o: ../MCAL/Communication/UART/UART_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)X:\Extracurriculars\Microchip Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../HAL/Communication/Bluetooth" -I"../HAL/Communication/USBTTL" -I"../HAL/Configuration" -I"../HAL/IO/Buttons/Button0" -I"../HAL/IO/Buttons/Button1" -I"../HAL/IO/Buttons/Button2" -I"../HAL/IO/Buzzer" -I"../HAL/IO/Display/LCD" -I"../HAL/IO/Keypad" -I"../HAL/IO/LEDs/LED0" -I"../HAL/IO/LEDs/LED1" -I"../HAL/IO/LEDs/LED2" -I"../HAL/IO/Motors/DC" -I"../HAL/IO/Motors/Servo" -I"../HAL/IO/Motors/Stepper" -I"../HAL/IO/Relay" -I"../MCAL/ADC" -I"../MCAL/Communication/I2C" -I"../MCAL/Communication/SPI" -I"../MCAL/Communication/TWI" -I"../MCAL/Communication/UART" -I"../MCAL/Configuration" -I"../MCAL/DIO" -I"../MCAL/Interrupt" -I"../MCAL/Timer" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode" -I"../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode" -I"../HAL/IO/Display/Segments/SevenSegment" -I"../HAL/IO/Display/LCD/LCD1602" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_4Bit" -I"../HAL/IO/Display/LCD/LCD1602/LCD1602_8Bit" -I"../MCAL/Timers/Timer0" -I"../MCAL/Timers/Timer1" -I"../MCAL/Timers/Timer2" -I"../MCAL/Timers/Watchdog"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "X:\Extracurriculars\Microchip Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

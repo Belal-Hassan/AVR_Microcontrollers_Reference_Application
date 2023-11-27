@@ -82,78 +82,78 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGcc>
-  <avrgcc.common.Device>-mmcu=atmega32a -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a"</avrgcc.common.Device>
-  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
-  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-  <avrgcc.compiler.symbols.DefSymbols>
-    <ListValues>
-      <Value>DEBUG</Value>
-    </ListValues>
-  </avrgcc.compiler.symbols.DefSymbols>
-  <avrgcc.compiler.directories.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
-      <Value>../App</Value>
-      <Value>../HAL/Communication/Bluetooth</Value>
-      <Value>../HAL/Communication/USBTTL</Value>
-      <Value>../HAL/Configuration</Value>
-      <Value>../HAL/IO/Buttons/Button0</Value>
-      <Value>../HAL/IO/Buttons/Button1</Value>
-      <Value>../HAL/IO/Buttons/Button2</Value>
-      <Value>../HAL/IO/Buzzer</Value>
-      <Value>../HAL/IO/Display/LCD</Value>
-      <Value>../HAL/IO/Keypad</Value>
-      <Value>../HAL/IO/LEDs/LED0</Value>
-      <Value>../HAL/IO/LEDs/LED1</Value>
-      <Value>../HAL/IO/LEDs/LED2</Value>
-      <Value>../HAL/IO/Motors/DC</Value>
-      <Value>../HAL/IO/Motors/Servo</Value>
-      <Value>../HAL/IO/Motors/Stepper</Value>
-      <Value>../HAL/IO/Relay</Value>
-      <Value>../MCAL/ADC</Value>
-      <Value>../MCAL/Communication/I2C</Value>
-      <Value>../MCAL/Communication/SPI</Value>
-      <Value>../MCAL/Communication/TWI</Value>
-      <Value>../MCAL/Communication/UART</Value>
-      <Value>../MCAL/Configuration</Value>
-      <Value>../MCAL/DIO</Value>
-      <Value>../MCAL/Interrupt</Value>
-      <Value>../MCAL/Timer</Value>
-      <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD</Value>
-      <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode</Value>
-      <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode</Value>
-      <Value>../HAL/IO/Display/Segments/SevenSegment</Value>
-      <Value>../HAL/IO/Display/LCD/LCD1602</Value>
-      <Value>../HAL/IO/Display/LCD/LCD1602/LCD1602_4Bit</Value>
-      <Value>../HAL/IO/Display/LCD/LCD1602/LCD1602_8Bit</Value>
-      <Value>../MCAL/Timers/Timer0</Value>
-      <Value>../MCAL/Timers/Timer1</Value>
-      <Value>../MCAL/Timers/Timer2</Value>
-      <Value>../MCAL/Timers/Watchdog</Value>
-    </ListValues>
-  </avrgcc.compiler.directories.IncludePaths>
-  <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
-  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
-  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-  <avrgcc.linker.libraries.Libraries>
-    <ListValues>
-      <Value>libm</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.Libraries>
-  <avrgcc.assembler.general.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
-    </ListValues>
-  </avrgcc.assembler.general.IncludePaths>
-  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
-</AvrGcc>
+        <avrgcc.common.Device>-mmcu=atmega32a -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a"</avrgcc.common.Device>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>DEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+            <Value>../App</Value>
+            <Value>../HAL/Communication/Bluetooth</Value>
+            <Value>../HAL/Communication/USBTTL</Value>
+            <Value>../HAL/Configuration</Value>
+            <Value>../HAL/IO/Buttons/Button0</Value>
+            <Value>../HAL/IO/Buttons/Button1</Value>
+            <Value>../HAL/IO/Buttons/Button2</Value>
+            <Value>../HAL/IO/Buzzer</Value>
+            <Value>../HAL/IO/Display/LCD</Value>
+            <Value>../HAL/IO/Keypad</Value>
+            <Value>../HAL/IO/LEDs/LED0</Value>
+            <Value>../HAL/IO/LEDs/LED1</Value>
+            <Value>../HAL/IO/LEDs/LED2</Value>
+            <Value>../HAL/IO/Motors/DC</Value>
+            <Value>../HAL/IO/Motors/Servo</Value>
+            <Value>../HAL/IO/Motors/Stepper</Value>
+            <Value>../HAL/IO/Relay</Value>
+            <Value>../MCAL/ADC</Value>
+            <Value>../MCAL/Communication/I2C</Value>
+            <Value>../MCAL/Communication/SPI</Value>
+            <Value>../MCAL/Communication/TWI</Value>
+            <Value>../MCAL/Communication/UART</Value>
+            <Value>../MCAL/Configuration</Value>
+            <Value>../MCAL/DIO</Value>
+            <Value>../MCAL/Interrupt</Value>
+            <Value>../MCAL/Timer</Value>
+            <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_BCD</Value>
+            <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Cathode</Value>
+            <Value>../HAL/IO/Display/Segments/SevenSegment/SevenSegment_Anode</Value>
+            <Value>../HAL/IO/Display/Segments/SevenSegment</Value>
+            <Value>../HAL/IO/Display/LCD/LCD1602</Value>
+            <Value>../HAL/IO/Display/LCD/LCD1602/LCD1602_4Bit</Value>
+            <Value>../HAL/IO/Display/LCD/LCD1602/LCD1602_8Bit</Value>
+            <Value>../MCAL/Timers/Timer0</Value>
+            <Value>../MCAL/Timers/Timer1</Value>
+            <Value>../MCAL/Timers/Timer2</Value>
+            <Value>../MCAL/Timers/Watchdog</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+          </ListValues>
+        </avrgcc.assembler.general.IncludePaths>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
@@ -338,6 +338,15 @@
     <Compile Include="HAL\IO\LEDs\LED2\LED2_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\IO\Motors\DC\DC_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Motors\DC\DC_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\IO\Motors\DC\DC_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\IO\Relay\Relay_Interface.c">
       <SubType>compile</SubType>
     </Compile>
@@ -357,6 +366,30 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\ADC\ADC_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\SPI\SPI_Addresses.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\SPI\SPI_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\SPI\SPI_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\SPI\SPI_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\UART\UART_Addresses.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\UART\UART_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\UART\UART_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\UART\UART_Private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\Configuration\Bit_Math.h">

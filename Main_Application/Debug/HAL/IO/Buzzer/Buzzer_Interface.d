@@ -25,6 +25,9 @@ HAL/IO/Buzzer/Buzzer_Interface.d HAL/IO/Buzzer/Buzzer_Interface.o: \
  ../MCAL/Interrupt/Interrupt_Configuration.h \
  ../MCAL/Interrupt/Interrput_Addresses.h ../MCAL/ADC/ADC_Private.h \
  ../MCAL/ADC/ADC_Configuration.h ../MCAL/ADC/ADC_Addresses.h \
+ ../MCAL/Timers/Timer0/Timer0_Private.h \
+ ../MCAL/Timers/Timer0/Timer0_Configuration.h \
+ ../MCAL/Timers/Timer0/Timer0_Addresses.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
@@ -90,6 +93,12 @@ x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../MCAL/ADC/ADC_Configuration.h:
 
 ../MCAL/ADC/ADC_Addresses.h:
+
+../MCAL/Timers/Timer0/Timer0_Private.h:
+
+../MCAL/Timers/Timer0/Timer0_Configuration.h:
+
+../MCAL/Timers/Timer0/Timer0_Addresses.h:
 
 x:\extracurriculars\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 

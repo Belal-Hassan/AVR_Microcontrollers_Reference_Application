@@ -15,7 +15,7 @@
 #define System_FREQ	16000000/MilliSec
 #define Timer0_Bits	256
 #define OC0			3
-extern u32 Overflow_Cycle, CTC_Cycle, PWM_Cycle;
+extern u32 Overflow_Cycle, CTC_Cycle;
 
 typedef enum
 {
@@ -27,7 +27,7 @@ typedef enum
 	Timer0_PRE_1024,
 	Timer0_Falling,
 	Timer0_Rising
-}prescaler;
+}prescale;
 
 typedef enum
 {

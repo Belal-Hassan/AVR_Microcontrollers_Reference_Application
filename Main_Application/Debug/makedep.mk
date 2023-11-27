@@ -30,9 +30,15 @@ HAL\IO\LEDs\LED1\LED1_Interface.c
 
 HAL\IO\LEDs\LED2\LED2_Interface.c
 
+HAL\IO\Motors\DC\DC_Interface.c
+
 HAL\IO\Relay\Relay_Interface.c
 
 MCAL\ADC\ADC_Interface.c
+
+MCAL\Communication\SPI\SPI_Interface.c
+
+MCAL\Communication\UART\UART_Interface.c
 
 MCAL\DIO\DIO_Interface.c
 

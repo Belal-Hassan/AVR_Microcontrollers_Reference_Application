@@ -8,10 +8,28 @@
 
 int main(void)
 {
-	LCD_Initialize();
-	ADC_Initialize(ADC_AREF, ADC_PRE_128);
-	while(1)
+	DC_Initialize(DC1);
+	while (1)
 	{
-		
+		for (int i = 0; i <= 100; i++)
+		{
+			DC_Speed(DC1, i);
+			_delay_ms(1);
+		}
+		for (int i = 100; i >= 0; i--)
+		{
+			DC_Speed(DC1, i);
+			_delay_ms(1);
+		}
+		for (int i = 0; i >= -100; i--)
+		{
+			DC_Speed(DC1, i);
+			_delay_ms(1);
+		}
+		for (int i = -100; i <= 0; i++)
+		{
+			DC_Speed(DC1, i);
+			_delay_ms(1);
+		}
 	}
 }

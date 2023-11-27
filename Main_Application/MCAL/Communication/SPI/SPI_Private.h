@@ -1,8 +1,8 @@
 /*
  * SPI_Private.h
  *
- * Created: 11/3/2023 11:15:41 AM
- *  Author: Belal hassan
+ * Created: 11/27/2023 7:10:58 AM
+ *  Author: Belal
  */ 
 
 
@@ -11,12 +11,12 @@
 
 #include <SPI_Configuration.h>
 
-status SPI_Master_Initialize(void);
-status SPI_Slave_Initialize(void);
-
-status SPI_Transmit_Character(u8 Character);
-status SPI_Receive_Character(u8* Character);
-
-status 
+void SPI_Initialize(mode Mode, istatus Interrupt, freq Frequency);
+void SPI_Transmit_Character(u8 Character);
+void SPI_Receive_Character(u8 *Character);
+void SPI_TranCeive_Character(u8 TCharacter, u8* RCharacter);
+void SPI_Transmit_String(u8* String);
+void SPI_Reveive_String(u8 *String);
+void SPI_Slave_Select(slave Slave);
 
 #endif /* SPI_PRIVATE_H_ */
