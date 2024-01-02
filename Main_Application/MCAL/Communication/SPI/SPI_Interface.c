@@ -97,6 +97,17 @@ void SPI_Initialize(mode Mode, istatus Interrupt, freq Frequency)
 		break;
 	}
 }
+void SPI_Slave_Select(slave Slave)
+{
+	switch(Slave)
+	{
+		case SPI_Slave1:
+		Clear_Bit(PORTB, SS);
+		break;
+		default:
+		break;
+	}
+}
 void SPI_Transmit_Character(u8 Character)
 {
 	if(Istatus == SPI_NoInterrupt)
@@ -123,7 +134,7 @@ void SPI_TranCeive_Character(u8 TCharacter, u8* RCharacter)
 	{
 		SPDR = TCharacter;
 		while(!Get_Bit(SPSR, SPIF));
-		*RCharacter = SPDR
+		*RCharacter = SPDR;
 	}
 }
 void SPI_Transmit_String(u8* String)
@@ -137,17 +148,6 @@ void SPI_Reveive_String(u8 *String)
 	u8 i = 0;
 	do 
 	{
-		SPI_Receive_Character(*(String + i));
+		SPI_Receive_Character((String + i));
 	} while (String[i++] != '\0');
-}
-void SPI_Slave_Select(slave Slave)
-{
-	switch(Slave)
-	{
-		case SPI_Slave1:
-		Clear_Bit(PORTB, SS);
-		break;
-		default:
-		break;
-	}
 }

@@ -9,27 +9,18 @@
 int main(void)
 {
 	DC_Initialize(DC1);
+	int i = -100;
 	while (1)
 	{
-		for (int i = 0; i <= 100; i++)
+		for (i = -100; i <= 100; i++)
 		{
 			DC_Speed(DC1, i);
-			_delay_ms(1);
+			_delay_ms(2);
 		}
-		for (int i = 100; i >= 0; i--)
+		for (i = 100; i >= -100; i--)
 		{
 			DC_Speed(DC1, i);
-			_delay_ms(1);
-		}
-		for (int i = 0; i >= -100; i--)
-		{
-			DC_Speed(DC1, i);
-			_delay_ms(1);
-		}
-		for (int i = -100; i <= 0; i++)
-		{
-			DC_Speed(DC1, i);
-			_delay_ms(1);
+			_delay_ms(2);
 		}
 	}
 }

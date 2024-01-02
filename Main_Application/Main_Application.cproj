@@ -180,7 +180,6 @@
     <Folder Include="HAL\IO\LEDs\LED2" />
     <Folder Include="HAL\IO\Motors" />
     <Folder Include="HAL\IO\Motors\DC" />
-    <Folder Include="HAL\IO\Motors\Stepper" />
     <Folder Include="HAL\IO\Motors\Servo" />
     <Folder Include="HAL\IO\Buzzer" />
     <Folder Include="HAL\IO\Buttons" />
@@ -191,7 +190,6 @@
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
     <Folder Include="MCAL\ADC" />
-    <Folder Include="MCAL\Communication\I2C" />
     <Folder Include="MCAL\Communication\UART" />
     <Folder Include="MCAL\Communication\TWI" />
     <Folder Include="MCAL\Communication\SPI" />
@@ -201,8 +199,6 @@
     <Folder Include="MCAL\Interrupt" />
     <Folder Include="MCAL\Timers" />
     <Folder Include="MCAL\Timers\Watchdog" />
-    <Folder Include="MCAL\Timers\Timer2" />
-    <Folder Include="MCAL\Timers\Timer1" />
     <Folder Include="MCAL\Timers\Timer0" />
   </ItemGroup>
   <ItemGroup>
@@ -380,6 +376,18 @@
     <Compile Include="MCAL\Communication\SPI\SPI_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\Communication\TWI\TWI_Addresses.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\TWI\TWI_Configuartion.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\TWI\TWI_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Communication\TWI\TWI_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL\Communication\UART\UART_Addresses.h">
       <SubType>compile</SubType>
     </Compile>
@@ -438,6 +446,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\Timers\Timer0\Timer0_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timers\Watchdog\WDT_Addresses.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timers\Watchdog\WDT_Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timers\Watchdog\WDT_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timers\Watchdog\WDT_Private.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

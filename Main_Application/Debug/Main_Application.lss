@@ -3,31 +3,31 @@ Main_Application.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000572  00000000  00000000  00000074  2**1
+  0 .text         00000530  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  000005e6  2**0
+  1 .data         00000000  00800060  00800060  000005a4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000002  00800060  00800060  000005e6  2**0
+  2 .bss          00000002  00800060  00800060  000005a4  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000005e6  2**0
+  3 .comment      00000030  00000000  00000000  000005a4  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000618  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000005d4  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000001e8  00000000  00000000  00000654  2**0
+  5 .debug_aranges 000001e8  00000000  00000000  00000610  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001937  00000000  00000000  0000083c  2**0
+  6 .debug_info   00001841  00000000  00000000  000007f8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000009c3  00000000  00000000  00002173  2**0
+  7 .debug_abbrev 000009b6  00000000  00000000  00002039  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001431  00000000  00000000  00002b36  2**0
+  8 .debug_line   000013d1  00000000  00000000  000029ef  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000038c  00000000  00000000  00003f68  2**2
+  9 .debug_frame  0000038c  00000000  00000000  00003dc0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000a98  00000000  00000000  000042f4  2**0
+ 10 .debug_str    00000a98  00000000  00000000  0000414c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000013ef  00000000  00000000  00004d8c  2**0
+ 11 .debug_loc    00001344  00000000  00000000  00004be4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000001a8  00000000  00000000  0000617b  2**0
+ 12 .debug_ranges 000001a8  00000000  00000000  00005f28  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -67,7 +67,7 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	e2 e7       	ldi	r30, 0x72	; 114
+  66:	e0 e3       	ldi	r30, 0x30	; 48
   68:	f5 e0       	ldi	r31, 0x05	; 5
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
@@ -90,7 +90,7 @@ Disassembly of section .text:
   82:	b2 07       	cpc	r27, r18
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 49 00 	call	0x92	; 0x92 <main>
-  8a:	0c 94 b7 02 	jmp	0x56e	; 0x56e <_exit>
+  8a:	0c 94 96 02 	jmp	0x52c	; 0x52c <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -103,36 +103,37 @@ int main(void)
 {
 	DC_Initialize(DC1);
   92:	80 e0       	ldi	r24, 0x00	; 0
-  94:	0e 94 91 00 	call	0x122	; 0x122 <DC_Initialize>
+  94:	0e 94 70 00 	call	0xe0	; 0xe0 <DC_Initialize>
+	int i = -100;
 	while (1)
 	{
-		for (int i = 0; i <= 100; i++)
-  98:	c0 e0       	ldi	r28, 0x00	; 0
-  9a:	d0 e0       	ldi	r29, 0x00	; 0
+		for (i = -100; i <= 100; i++)
+  98:	cc e9       	ldi	r28, 0x9C	; 156
+  9a:	df ef       	ldi	r29, 0xFF	; 255
   9c:	0b c0       	rjmp	.+22     	; 0xb4 <main+0x22>
 		{
 			DC_Speed(DC1, i);
   9e:	6c 2f       	mov	r22, r28
   a0:	80 e0       	ldi	r24, 0x00	; 0
-  a2:	0e 94 d7 00 	call	0x1ae	; 0x1ae <DC_Speed>
+  a2:	0e 94 b6 00 	call	0x16c	; 0x16c <DC_Speed>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-  a6:	8f e9       	ldi	r24, 0x9F	; 159
-  a8:	9f e0       	ldi	r25, 0x0F	; 15
+  a6:	8f e3       	ldi	r24, 0x3F	; 63
+  a8:	9f e1       	ldi	r25, 0x1F	; 31
   aa:	01 97       	sbiw	r24, 0x01	; 1
   ac:	f1 f7       	brne	.-4      	; 0xaa <main+0x18>
   ae:	00 c0       	rjmp	.+0      	; 0xb0 <main+0x1e>
   b0:	00 00       	nop
-int main(void)
 {
 	DC_Initialize(DC1);
+	int i = -100;
 	while (1)
 	{
-		for (int i = 0; i <= 100; i++)
+		for (i = -100; i <= 100; i++)
   b2:	21 96       	adiw	r28, 0x01	; 1
   b4:	c5 36       	cpi	r28, 0x65	; 101
   b6:	d1 05       	cpc	r29, r1
@@ -141,848 +142,793 @@ int main(void)
   bc:	d0 e0       	ldi	r29, 0x00	; 0
   be:	0b c0       	rjmp	.+22     	; 0xd6 <main+0x44>
 			DC_Speed(DC1, i);
-			_delay_ms(1);
+			_delay_ms(2);
 		}
-		for (int i = 100; i >= 0; i--)
+		for (i = 100; i >= -100; i--)
 		{
 			DC_Speed(DC1, i);
   c0:	6c 2f       	mov	r22, r28
   c2:	80 e0       	ldi	r24, 0x00	; 0
-  c4:	0e 94 d7 00 	call	0x1ae	; 0x1ae <DC_Speed>
-  c8:	8f e9       	ldi	r24, 0x9F	; 159
-  ca:	9f e0       	ldi	r25, 0x0F	; 15
+  c4:	0e 94 b6 00 	call	0x16c	; 0x16c <DC_Speed>
+  c8:	8f e3       	ldi	r24, 0x3F	; 63
+  ca:	9f e1       	ldi	r25, 0x1F	; 31
   cc:	01 97       	sbiw	r24, 0x01	; 1
   ce:	f1 f7       	brne	.-4      	; 0xcc <main+0x3a>
   d0:	00 c0       	rjmp	.+0      	; 0xd2 <main+0x40>
   d2:	00 00       	nop
-		for (int i = 0; i <= 100; i++)
+		for (i = -100; i <= 100; i++)
 		{
 			DC_Speed(DC1, i);
-			_delay_ms(1);
+			_delay_ms(2);
 		}
-		for (int i = 100; i >= 0; i--)
+		for (i = 100; i >= -100; i--)
   d4:	21 97       	sbiw	r28, 0x01	; 1
-  d6:	dd 23       	and	r29, r29
-  d8:	9c f7       	brge	.-26     	; 0xc0 <main+0x2e>
-  da:	c0 e0       	ldi	r28, 0x00	; 0
-  dc:	d0 e0       	ldi	r29, 0x00	; 0
-  de:	0b c0       	rjmp	.+22     	; 0xf6 <main+0x64>
-			DC_Speed(DC1, i);
-			_delay_ms(1);
-		}
-		for (int i = 0; i >= -100; i--)
-		{
-			DC_Speed(DC1, i);
-  e0:	6c 2f       	mov	r22, r28
-  e2:	80 e0       	ldi	r24, 0x00	; 0
-  e4:	0e 94 d7 00 	call	0x1ae	; 0x1ae <DC_Speed>
-  e8:	8f e9       	ldi	r24, 0x9F	; 159
-  ea:	9f e0       	ldi	r25, 0x0F	; 15
-  ec:	01 97       	sbiw	r24, 0x01	; 1
-  ee:	f1 f7       	brne	.-4      	; 0xec <main+0x5a>
-  f0:	00 c0       	rjmp	.+0      	; 0xf2 <main+0x60>
-  f2:	00 00       	nop
-		for (int i = 100; i >= 0; i--)
-		{
-			DC_Speed(DC1, i);
-			_delay_ms(1);
-		}
-		for (int i = 0; i >= -100; i--)
-  f4:	21 97       	sbiw	r28, 0x01	; 1
-  f6:	cc 39       	cpi	r28, 0x9C	; 156
-  f8:	9f ef       	ldi	r25, 0xFF	; 255
-  fa:	d9 07       	cpc	r29, r25
-  fc:	8c f7       	brge	.-30     	; 0xe0 <main+0x4e>
-  fe:	cc e9       	ldi	r28, 0x9C	; 156
- 100:	df ef       	ldi	r29, 0xFF	; 255
- 102:	0b c0       	rjmp	.+22     	; 0x11a <main+0x88>
-			DC_Speed(DC1, i);
-			_delay_ms(1);
-		}
-		for (int i = -100; i <= 0; i++)
-		{
-			DC_Speed(DC1, i);
- 104:	6c 2f       	mov	r22, r28
- 106:	80 e0       	ldi	r24, 0x00	; 0
- 108:	0e 94 d7 00 	call	0x1ae	; 0x1ae <DC_Speed>
- 10c:	8f e9       	ldi	r24, 0x9F	; 159
- 10e:	9f e0       	ldi	r25, 0x0F	; 15
- 110:	01 97       	sbiw	r24, 0x01	; 1
- 112:	f1 f7       	brne	.-4      	; 0x110 <main+0x7e>
- 114:	00 c0       	rjmp	.+0      	; 0x116 <main+0x84>
- 116:	00 00       	nop
-		for (int i = 0; i >= -100; i--)
-		{
-			DC_Speed(DC1, i);
-			_delay_ms(1);
-		}
-		for (int i = -100; i <= 0; i++)
- 118:	21 96       	adiw	r28, 0x01	; 1
- 11a:	1c 16       	cp	r1, r28
- 11c:	1d 06       	cpc	r1, r29
- 11e:	94 f7       	brge	.-28     	; 0x104 <main+0x72>
- 120:	bb cf       	rjmp	.-138    	; 0x98 <main+0x6>
+  d6:	cc 39       	cpi	r28, 0x9C	; 156
+  d8:	9f ef       	ldi	r25, 0xFF	; 255
+  da:	d9 07       	cpc	r29, r25
+  dc:	8c f7       	brge	.-30     	; 0xc0 <main+0x2e>
+  de:	dc cf       	rjmp	.-72     	; 0x98 <main+0x6>
 
-00000122 <DC_Initialize>:
+000000e0 <DC_Initialize>:
 
 void DC_Initialize(motor Motor)
 {
 	static bool Initialized1 = false;
 	static bool Initialized2 = false;
 	switch(Motor)
- 122:	88 23       	and	r24, r24
- 124:	19 f0       	breq	.+6      	; 0x12c <DC_Initialize+0xa>
- 126:	81 30       	cpi	r24, 0x01	; 1
- 128:	e1 f0       	breq	.+56     	; 0x162 <DC_Initialize+0x40>
- 12a:	08 95       	ret
+  e0:	88 23       	and	r24, r24
+  e2:	19 f0       	breq	.+6      	; 0xea <DC_Initialize+0xa>
+  e4:	81 30       	cpi	r24, 0x01	; 1
+  e6:	e1 f0       	breq	.+56     	; 0x120 <DC_Initialize+0x40>
+  e8:	08 95       	ret
 	{
 		case DC1:
 		if(!Initialized1)
- 12c:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <Initialized1.2465>
- 130:	81 11       	cpse	r24, r1
- 132:	31 c0       	rjmp	.+98     	; 0x196 <DC_Initialize+0x74>
+  ea:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <Initialized1.2465>
+  ee:	81 11       	cpse	r24, r1
+  f0:	31 c0       	rjmp	.+98     	; 0x154 <DC_Initialize+0x74>
 		{
 			DIO_SetPinDirection(DC_DIR_PORT, DC_IN12, DC_Output);
- 134:	41 e0       	ldi	r20, 0x01	; 1
- 136:	60 e0       	ldi	r22, 0x00	; 0
- 138:	82 e0       	ldi	r24, 0x02	; 2
- 13a:	0e 94 2b 01 	call	0x256	; 0x256 <DIO_SetPinDirection>
+  f2:	41 e0       	ldi	r20, 0x01	; 1
+  f4:	60 e0       	ldi	r22, 0x00	; 0
+  f6:	82 e0       	ldi	r24, 0x02	; 2
+  f8:	0e 94 0a 01 	call	0x214	; 0x214 <DIO_SetPinDirection>
 			DIO_SetPinValue(DC_DIR_PORT, DC_IN12, DC_Low);
- 13e:	40 e0       	ldi	r20, 0x00	; 0
- 140:	60 e0       	ldi	r22, 0x00	; 0
- 142:	82 e0       	ldi	r24, 0x02	; 2
- 144:	0e 94 98 01 	call	0x330	; 0x330 <DIO_SetPinValue>
+  fc:	40 e0       	ldi	r20, 0x00	; 0
+  fe:	60 e0       	ldi	r22, 0x00	; 0
+ 100:	82 e0       	ldi	r24, 0x02	; 2
+ 102:	0e 94 77 01 	call	0x2ee	; 0x2ee <DIO_SetPinValue>
 			Timer0_FPWM_Initialize();
- 148:	0e 94 05 02 	call	0x40a	; 0x40a <Timer0_FPWM_Initialize>
+ 106:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <Timer0_FPWM_Initialize>
 			Timer0_FPWM_Start(Timer0_PRE_64);
- 14c:	83 e0       	ldi	r24, 0x03	; 3
- 14e:	0e 94 0f 02 	call	0x41e	; 0x41e <Timer0_FPWM_Start>
+ 10a:	83 e0       	ldi	r24, 0x03	; 3
+ 10c:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Timer0_FPWM_Start>
 			Timer0_FPWM_SetDuty(PWM_NonInverting, 0);
- 152:	60 e0       	ldi	r22, 0x00	; 0
- 154:	81 e0       	ldi	r24, 0x01	; 1
- 156:	0e 94 63 02 	call	0x4c6	; 0x4c6 <Timer0_FPWM_SetDuty>
+ 110:	60 e0       	ldi	r22, 0x00	; 0
+ 112:	81 e0       	ldi	r24, 0x01	; 1
+ 114:	0e 94 42 02 	call	0x484	; 0x484 <Timer0_FPWM_SetDuty>
 			Initialized1 = true;
- 15a:	81 e0       	ldi	r24, 0x01	; 1
- 15c:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <Initialized1.2465>
- 160:	08 95       	ret
+ 118:	81 e0       	ldi	r24, 0x01	; 1
+ 11a:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <Initialized1.2465>
+ 11e:	08 95       	ret
 		}
 		break;
 		case DC2:
 		if(!Initialized2)
- 162:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
- 166:	81 11       	cpse	r24, r1
- 168:	16 c0       	rjmp	.+44     	; 0x196 <DC_Initialize+0x74>
+ 120:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 124:	81 11       	cpse	r24, r1
+ 126:	16 c0       	rjmp	.+44     	; 0x154 <DC_Initialize+0x74>
 		{
 			DIO_SetPinDirection(DC_DIR_PORT, DC_IN12, DC_Output);
- 16a:	41 e0       	ldi	r20, 0x01	; 1
- 16c:	60 e0       	ldi	r22, 0x00	; 0
- 16e:	82 e0       	ldi	r24, 0x02	; 2
- 170:	0e 94 2b 01 	call	0x256	; 0x256 <DIO_SetPinDirection>
+ 128:	41 e0       	ldi	r20, 0x01	; 1
+ 12a:	60 e0       	ldi	r22, 0x00	; 0
+ 12c:	82 e0       	ldi	r24, 0x02	; 2
+ 12e:	0e 94 0a 01 	call	0x214	; 0x214 <DIO_SetPinDirection>
 			DIO_SetPinValue(DC_DIR_PORT, DC_IN12, DC_Low);
- 174:	40 e0       	ldi	r20, 0x00	; 0
- 176:	60 e0       	ldi	r22, 0x00	; 0
- 178:	82 e0       	ldi	r24, 0x02	; 2
- 17a:	0e 94 98 01 	call	0x330	; 0x330 <DIO_SetPinValue>
+ 132:	40 e0       	ldi	r20, 0x00	; 0
+ 134:	60 e0       	ldi	r22, 0x00	; 0
+ 136:	82 e0       	ldi	r24, 0x02	; 2
+ 138:	0e 94 77 01 	call	0x2ee	; 0x2ee <DIO_SetPinValue>
 			Timer0_FPWM_Initialize();
- 17e:	0e 94 05 02 	call	0x40a	; 0x40a <Timer0_FPWM_Initialize>
+ 13c:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <Timer0_FPWM_Initialize>
 			Timer0_FPWM_Start(Timer0_PRE_64);
- 182:	83 e0       	ldi	r24, 0x03	; 3
- 184:	0e 94 0f 02 	call	0x41e	; 0x41e <Timer0_FPWM_Start>
+ 140:	83 e0       	ldi	r24, 0x03	; 3
+ 142:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Timer0_FPWM_Start>
 			Timer0_FPWM_SetDuty(PWM_NonInverting, 0);
- 188:	60 e0       	ldi	r22, 0x00	; 0
- 18a:	81 e0       	ldi	r24, 0x01	; 1
- 18c:	0e 94 63 02 	call	0x4c6	; 0x4c6 <Timer0_FPWM_SetDuty>
+ 146:	60 e0       	ldi	r22, 0x00	; 0
+ 148:	81 e0       	ldi	r24, 0x01	; 1
+ 14a:	0e 94 42 02 	call	0x484	; 0x484 <Timer0_FPWM_SetDuty>
 			Initialized2 = true;
- 190:	81 e0       	ldi	r24, 0x01	; 1
- 192:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
- 196:	08 95       	ret
+ 14e:	81 e0       	ldi	r24, 0x01	; 1
+ 150:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 154:	08 95       	ret
 
-00000198 <DC_Stop>:
+00000156 <DC_Stop>:
 		break;
 	}
 }
 void DC_Stop(motor Motor)
 {
 	switch(Motor)
- 198:	88 23       	and	r24, r24
- 19a:	19 f0       	breq	.+6      	; 0x1a2 <DC_Stop+0xa>
- 19c:	81 30       	cpi	r24, 0x01	; 1
- 19e:	21 f0       	breq	.+8      	; 0x1a8 <DC_Stop+0x10>
- 1a0:	08 95       	ret
+ 156:	88 23       	and	r24, r24
+ 158:	19 f0       	breq	.+6      	; 0x160 <DC_Stop+0xa>
+ 15a:	81 30       	cpi	r24, 0x01	; 1
+ 15c:	21 f0       	breq	.+8      	; 0x166 <DC_Stop+0x10>
+ 15e:	08 95       	ret
 	{
 		case DC1:
 		Timer0_FPWM_Stop();
- 1a2:	0e 94 59 02 	call	0x4b2	; 0x4b2 <Timer0_FPWM_Stop>
+ 160:	0e 94 38 02 	call	0x470	; 0x470 <Timer0_FPWM_Stop>
 		break;
- 1a6:	08 95       	ret
+ 164:	08 95       	ret
 		case DC2:
 		Timer0_FPWM_Stop();
- 1a8:	0e 94 59 02 	call	0x4b2	; 0x4b2 <Timer0_FPWM_Stop>
- 1ac:	08 95       	ret
+ 166:	0e 94 38 02 	call	0x470	; 0x470 <Timer0_FPWM_Stop>
+ 16a:	08 95       	ret
 
-000001ae <DC_Speed>:
+0000016c <DC_Speed>:
 		default:
 		break;
 	}
 }
 void DC_Speed(motor Motor, s8 Speed)
 {
- 1ae:	cf 93       	push	r28
- 1b0:	c6 2f       	mov	r28, r22
+ 16c:	cf 93       	push	r28
+ 16e:	c6 2f       	mov	r28, r22
 	switch(Motor)
- 1b2:	88 23       	and	r24, r24
- 1b4:	19 f0       	breq	.+6      	; 0x1bc <DC_Speed+0xe>
- 1b6:	81 30       	cpi	r24, 0x01	; 1
- 1b8:	39 f1       	breq	.+78     	; 0x208 <DC_Speed+0x5a>
- 1ba:	4b c0       	rjmp	.+150    	; 0x252 <DC_Speed+0xa4>
+ 170:	88 23       	and	r24, r24
+ 172:	19 f0       	breq	.+6      	; 0x17a <DC_Speed+0xe>
+ 174:	81 30       	cpi	r24, 0x01	; 1
+ 176:	39 f1       	breq	.+78     	; 0x1c6 <DC_Speed+0x5a>
+ 178:	4b c0       	rjmp	.+150    	; 0x210 <DC_Speed+0xa4>
 	{
 		case DC1:
 		DC_Initialize(DC1);
- 1bc:	80 e0       	ldi	r24, 0x00	; 0
- 1be:	0e 94 91 00 	call	0x122	; 0x122 <DC_Initialize>
+ 17a:	80 e0       	ldi	r24, 0x00	; 0
+ 17c:	0e 94 70 00 	call	0xe0	; 0xe0 <DC_Initialize>
 		if(Speed > 0)
- 1c2:	1c 16       	cp	r1, r28
- 1c4:	64 f4       	brge	.+24     	; 0x1de <DC_Speed+0x30>
+ 180:	1c 16       	cp	r1, r28
+ 182:	64 f4       	brge	.+24     	; 0x19c <DC_Speed+0x30>
 		{
 			DIO_SetPinValue(DC_DIR_PORT, DC_IN12, DC_CW);
- 1c6:	40 e0       	ldi	r20, 0x00	; 0
- 1c8:	60 e0       	ldi	r22, 0x00	; 0
- 1ca:	82 e0       	ldi	r24, 0x02	; 2
- 1cc:	0e 94 98 01 	call	0x330	; 0x330 <DIO_SetPinValue>
+ 184:	40 e0       	ldi	r20, 0x00	; 0
+ 186:	60 e0       	ldi	r22, 0x00	; 0
+ 188:	82 e0       	ldi	r24, 0x02	; 2
+ 18a:	0e 94 77 01 	call	0x2ee	; 0x2ee <DIO_SetPinValue>
 			Timer0_FPWM_Start(Timer0_PRE_64);
- 1d0:	83 e0       	ldi	r24, 0x03	; 3
- 1d2:	0e 94 0f 02 	call	0x41e	; 0x41e <Timer0_FPWM_Start>
+ 18e:	83 e0       	ldi	r24, 0x03	; 3
+ 190:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Timer0_FPWM_Start>
 			Timer0_FPWM_SetDuty(PWM_NonInverting, Speed);
- 1d6:	6c 2f       	mov	r22, r28
- 1d8:	81 e0       	ldi	r24, 0x01	; 1
- 1da:	0e 94 63 02 	call	0x4c6	; 0x4c6 <Timer0_FPWM_SetDuty>
+ 194:	6c 2f       	mov	r22, r28
+ 196:	81 e0       	ldi	r24, 0x01	; 1
+ 198:	0e 94 42 02 	call	0x484	; 0x484 <Timer0_FPWM_SetDuty>
 		}
 		if(Speed < 0)
- 1de:	cc 23       	and	r28, r28
- 1e0:	6c f4       	brge	.+26     	; 0x1fc <DC_Speed+0x4e>
+ 19c:	cc 23       	and	r28, r28
+ 19e:	6c f4       	brge	.+26     	; 0x1ba <DC_Speed+0x4e>
 		{
 			DIO_SetPinValue(DC_DIR_PORT, DC_IN12, DC_CCW);
- 1e2:	41 e0       	ldi	r20, 0x01	; 1
- 1e4:	60 e0       	ldi	r22, 0x00	; 0
- 1e6:	82 e0       	ldi	r24, 0x02	; 2
- 1e8:	0e 94 98 01 	call	0x330	; 0x330 <DIO_SetPinValue>
+ 1a0:	41 e0       	ldi	r20, 0x01	; 1
+ 1a2:	60 e0       	ldi	r22, 0x00	; 0
+ 1a4:	82 e0       	ldi	r24, 0x02	; 2
+ 1a6:	0e 94 77 01 	call	0x2ee	; 0x2ee <DIO_SetPinValue>
 			Timer0_FPWM_Start(Timer0_PRE_64);
- 1ec:	83 e0       	ldi	r24, 0x03	; 3
- 1ee:	0e 94 0f 02 	call	0x41e	; 0x41e <Timer0_FPWM_Start>
+ 1aa:	83 e0       	ldi	r24, 0x03	; 3
+ 1ac:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Timer0_FPWM_Start>
 			Timer0_FPWM_SetDuty(PWM_NonInverting, -Speed);
- 1f2:	6c 2f       	mov	r22, r28
- 1f4:	61 95       	neg	r22
- 1f6:	81 e0       	ldi	r24, 0x01	; 1
- 1f8:	0e 94 63 02 	call	0x4c6	; 0x4c6 <Timer0_FPWM_SetDuty>
+ 1b0:	6c 2f       	mov	r22, r28
+ 1b2:	61 95       	neg	r22
+ 1b4:	81 e0       	ldi	r24, 0x01	; 1
+ 1b6:	0e 94 42 02 	call	0x484	; 0x484 <Timer0_FPWM_SetDuty>
 		}
 		if(Speed == 0)
- 1fc:	c1 11       	cpse	r28, r1
- 1fe:	29 c0       	rjmp	.+82     	; 0x252 <DC_Speed+0xa4>
+ 1ba:	c1 11       	cpse	r28, r1
+ 1bc:	29 c0       	rjmp	.+82     	; 0x210 <DC_Speed+0xa4>
 			DC_Stop(DC1);
- 200:	80 e0       	ldi	r24, 0x00	; 0
- 202:	0e 94 cc 00 	call	0x198	; 0x198 <DC_Stop>
- 206:	25 c0       	rjmp	.+74     	; 0x252 <DC_Speed+0xa4>
+ 1be:	80 e0       	ldi	r24, 0x00	; 0
+ 1c0:	0e 94 ab 00 	call	0x156	; 0x156 <DC_Stop>
+ 1c4:	25 c0       	rjmp	.+74     	; 0x210 <DC_Speed+0xa4>
 		break;
 		case DC2:
 		DC_Initialize(DC2);
- 208:	81 e0       	ldi	r24, 0x01	; 1
- 20a:	0e 94 91 00 	call	0x122	; 0x122 <DC_Initialize>
+ 1c6:	81 e0       	ldi	r24, 0x01	; 1
+ 1c8:	0e 94 70 00 	call	0xe0	; 0xe0 <DC_Initialize>
 		if(Speed > 0)
- 20e:	1c 16       	cp	r1, r28
- 210:	6c f4       	brge	.+26     	; 0x22c <DC_Speed+0x7e>
+ 1cc:	1c 16       	cp	r1, r28
+ 1ce:	6c f4       	brge	.+26     	; 0x1ea <DC_Speed+0x7e>
 		{
 			DIO_SetPinValue(DC_DIR_PORT, DC_IN34, DC_CW);
- 212:	40 e0       	ldi	r20, 0x00	; 0
- 214:	61 e0       	ldi	r22, 0x01	; 1
- 216:	82 e0       	ldi	r24, 0x02	; 2
- 218:	0e 94 98 01 	call	0x330	; 0x330 <DIO_SetPinValue>
+ 1d0:	40 e0       	ldi	r20, 0x00	; 0
+ 1d2:	61 e0       	ldi	r22, 0x01	; 1
+ 1d4:	82 e0       	ldi	r24, 0x02	; 2
+ 1d6:	0e 94 77 01 	call	0x2ee	; 0x2ee <DIO_SetPinValue>
 			Timer0_FPWM_Start(Timer0_PRE_64);
- 21c:	83 e0       	ldi	r24, 0x03	; 3
- 21e:	0e 94 0f 02 	call	0x41e	; 0x41e <Timer0_FPWM_Start>
+ 1da:	83 e0       	ldi	r24, 0x03	; 3
+ 1dc:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Timer0_FPWM_Start>
 			Timer0_FPWM_SetDuty(PWM_NonInverting, Speed);
- 222:	6c 2f       	mov	r22, r28
- 224:	81 e0       	ldi	r24, 0x01	; 1
- 226:	0e 94 63 02 	call	0x4c6	; 0x4c6 <Timer0_FPWM_SetDuty>
- 22a:	13 c0       	rjmp	.+38     	; 0x252 <DC_Speed+0xa4>
+ 1e0:	6c 2f       	mov	r22, r28
+ 1e2:	81 e0       	ldi	r24, 0x01	; 1
+ 1e4:	0e 94 42 02 	call	0x484	; 0x484 <Timer0_FPWM_SetDuty>
+ 1e8:	13 c0       	rjmp	.+38     	; 0x210 <DC_Speed+0xa4>
 		}
 		else if(Speed < 0)
- 22c:	cc 23       	and	r28, r28
- 22e:	74 f4       	brge	.+28     	; 0x24c <DC_Speed+0x9e>
+ 1ea:	cc 23       	and	r28, r28
+ 1ec:	74 f4       	brge	.+28     	; 0x20a <DC_Speed+0x9e>
 		{
 			DIO_SetPinValue(DC_DIR_PORT, DC_IN34, DC_CCW);
- 230:	41 e0       	ldi	r20, 0x01	; 1
- 232:	61 e0       	ldi	r22, 0x01	; 1
- 234:	82 e0       	ldi	r24, 0x02	; 2
- 236:	0e 94 98 01 	call	0x330	; 0x330 <DIO_SetPinValue>
+ 1ee:	41 e0       	ldi	r20, 0x01	; 1
+ 1f0:	61 e0       	ldi	r22, 0x01	; 1
+ 1f2:	82 e0       	ldi	r24, 0x02	; 2
+ 1f4:	0e 94 77 01 	call	0x2ee	; 0x2ee <DIO_SetPinValue>
 			Timer0_FPWM_Start(Timer0_PRE_64);
- 23a:	83 e0       	ldi	r24, 0x03	; 3
- 23c:	0e 94 0f 02 	call	0x41e	; 0x41e <Timer0_FPWM_Start>
+ 1f8:	83 e0       	ldi	r24, 0x03	; 3
+ 1fa:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Timer0_FPWM_Start>
 			Timer0_FPWM_SetDuty(PWM_NonInverting, -Speed);
- 240:	6c 2f       	mov	r22, r28
- 242:	61 95       	neg	r22
- 244:	81 e0       	ldi	r24, 0x01	; 1
- 246:	0e 94 63 02 	call	0x4c6	; 0x4c6 <Timer0_FPWM_SetDuty>
- 24a:	03 c0       	rjmp	.+6      	; 0x252 <DC_Speed+0xa4>
+ 1fe:	6c 2f       	mov	r22, r28
+ 200:	61 95       	neg	r22
+ 202:	81 e0       	ldi	r24, 0x01	; 1
+ 204:	0e 94 42 02 	call	0x484	; 0x484 <Timer0_FPWM_SetDuty>
+ 208:	03 c0       	rjmp	.+6      	; 0x210 <DC_Speed+0xa4>
 		}
 		else
 		DC_Stop(DC2);
- 24c:	81 e0       	ldi	r24, 0x01	; 1
- 24e:	0e 94 cc 00 	call	0x198	; 0x198 <DC_Stop>
+ 20a:	81 e0       	ldi	r24, 0x01	; 1
+ 20c:	0e 94 ab 00 	call	0x156	; 0x156 <DC_Stop>
 		break;
 		default:
 		break;
 	}
- 252:	cf 91       	pop	r28
- 254:	08 95       	ret
+ 210:	cf 91       	pop	r28
+ 212:	08 95       	ret
 
-00000256 <DIO_SetPinDirection>:
+00000214 <DIO_SetPinDirection>:
 #include <DIO_Private.h>
 
 /*------------------------------PINS------------------------------*/
 void DIO_SetPinDirection(port Port, pin Pin, state State)
 {
 	switch(Port)
- 256:	81 30       	cpi	r24, 0x01	; 1
- 258:	01 f1       	breq	.+64     	; 0x29a <DIO_SetPinDirection+0x44>
- 25a:	30 f0       	brcs	.+12     	; 0x268 <DIO_SetPinDirection+0x12>
- 25c:	82 30       	cpi	r24, 0x02	; 2
- 25e:	b1 f1       	breq	.+108    	; 0x2cc <DIO_SetPinDirection+0x76>
- 260:	83 30       	cpi	r24, 0x03	; 3
- 262:	09 f4       	brne	.+2      	; 0x266 <DIO_SetPinDirection+0x10>
- 264:	4c c0       	rjmp	.+152    	; 0x2fe <DIO_SetPinDirection+0xa8>
- 266:	08 95       	ret
+ 214:	81 30       	cpi	r24, 0x01	; 1
+ 216:	01 f1       	breq	.+64     	; 0x258 <DIO_SetPinDirection+0x44>
+ 218:	30 f0       	brcs	.+12     	; 0x226 <DIO_SetPinDirection+0x12>
+ 21a:	82 30       	cpi	r24, 0x02	; 2
+ 21c:	b1 f1       	breq	.+108    	; 0x28a <DIO_SetPinDirection+0x76>
+ 21e:	83 30       	cpi	r24, 0x03	; 3
+ 220:	09 f4       	brne	.+2      	; 0x224 <DIO_SetPinDirection+0x10>
+ 222:	4c c0       	rjmp	.+152    	; 0x2bc <DIO_SetPinDirection+0xa8>
+ 224:	08 95       	ret
 	{
 		case DIO_PORTA:
 		if(State == DIO_Input)
- 268:	41 11       	cpse	r20, r1
- 26a:	0c c0       	rjmp	.+24     	; 0x284 <DIO_SetPinDirection+0x2e>
+ 226:	41 11       	cpse	r20, r1
+ 228:	0c c0       	rjmp	.+24     	; 0x242 <DIO_SetPinDirection+0x2e>
 		Clear_Bit(DDRA, Pin);
- 26c:	2a b3       	in	r18, 0x1a	; 26
- 26e:	81 e0       	ldi	r24, 0x01	; 1
- 270:	90 e0       	ldi	r25, 0x00	; 0
- 272:	02 c0       	rjmp	.+4      	; 0x278 <DIO_SetPinDirection+0x22>
- 274:	88 0f       	add	r24, r24
- 276:	99 1f       	adc	r25, r25
- 278:	6a 95       	dec	r22
- 27a:	e2 f7       	brpl	.-8      	; 0x274 <DIO_SetPinDirection+0x1e>
- 27c:	80 95       	com	r24
- 27e:	82 23       	and	r24, r18
- 280:	8a bb       	out	0x1a, r24	; 26
- 282:	08 95       	ret
+ 22a:	2a b3       	in	r18, 0x1a	; 26
+ 22c:	81 e0       	ldi	r24, 0x01	; 1
+ 22e:	90 e0       	ldi	r25, 0x00	; 0
+ 230:	02 c0       	rjmp	.+4      	; 0x236 <DIO_SetPinDirection+0x22>
+ 232:	88 0f       	add	r24, r24
+ 234:	99 1f       	adc	r25, r25
+ 236:	6a 95       	dec	r22
+ 238:	e2 f7       	brpl	.-8      	; 0x232 <DIO_SetPinDirection+0x1e>
+ 23a:	80 95       	com	r24
+ 23c:	82 23       	and	r24, r18
+ 23e:	8a bb       	out	0x1a, r24	; 26
+ 240:	08 95       	ret
 		else
 		Set_Bit(DDRA, Pin);
- 284:	2a b3       	in	r18, 0x1a	; 26
- 286:	81 e0       	ldi	r24, 0x01	; 1
- 288:	90 e0       	ldi	r25, 0x00	; 0
- 28a:	02 c0       	rjmp	.+4      	; 0x290 <DIO_SetPinDirection+0x3a>
- 28c:	88 0f       	add	r24, r24
- 28e:	99 1f       	adc	r25, r25
- 290:	6a 95       	dec	r22
- 292:	e2 f7       	brpl	.-8      	; 0x28c <DIO_SetPinDirection+0x36>
- 294:	82 2b       	or	r24, r18
- 296:	8a bb       	out	0x1a, r24	; 26
- 298:	08 95       	ret
+ 242:	2a b3       	in	r18, 0x1a	; 26
+ 244:	81 e0       	ldi	r24, 0x01	; 1
+ 246:	90 e0       	ldi	r25, 0x00	; 0
+ 248:	02 c0       	rjmp	.+4      	; 0x24e <DIO_SetPinDirection+0x3a>
+ 24a:	88 0f       	add	r24, r24
+ 24c:	99 1f       	adc	r25, r25
+ 24e:	6a 95       	dec	r22
+ 250:	e2 f7       	brpl	.-8      	; 0x24a <DIO_SetPinDirection+0x36>
+ 252:	82 2b       	or	r24, r18
+ 254:	8a bb       	out	0x1a, r24	; 26
+ 256:	08 95       	ret
 		break;
 		case DIO_PORTB:
 		if(State == DIO_Input)
- 29a:	41 11       	cpse	r20, r1
- 29c:	0c c0       	rjmp	.+24     	; 0x2b6 <DIO_SetPinDirection+0x60>
+ 258:	41 11       	cpse	r20, r1
+ 25a:	0c c0       	rjmp	.+24     	; 0x274 <DIO_SetPinDirection+0x60>
 		Clear_Bit(DDRB, Pin);
- 29e:	27 b3       	in	r18, 0x17	; 23
- 2a0:	81 e0       	ldi	r24, 0x01	; 1
- 2a2:	90 e0       	ldi	r25, 0x00	; 0
- 2a4:	02 c0       	rjmp	.+4      	; 0x2aa <DIO_SetPinDirection+0x54>
- 2a6:	88 0f       	add	r24, r24
- 2a8:	99 1f       	adc	r25, r25
- 2aa:	6a 95       	dec	r22
- 2ac:	e2 f7       	brpl	.-8      	; 0x2a6 <DIO_SetPinDirection+0x50>
- 2ae:	80 95       	com	r24
- 2b0:	82 23       	and	r24, r18
- 2b2:	87 bb       	out	0x17, r24	; 23
- 2b4:	08 95       	ret
+ 25c:	27 b3       	in	r18, 0x17	; 23
+ 25e:	81 e0       	ldi	r24, 0x01	; 1
+ 260:	90 e0       	ldi	r25, 0x00	; 0
+ 262:	02 c0       	rjmp	.+4      	; 0x268 <DIO_SetPinDirection+0x54>
+ 264:	88 0f       	add	r24, r24
+ 266:	99 1f       	adc	r25, r25
+ 268:	6a 95       	dec	r22
+ 26a:	e2 f7       	brpl	.-8      	; 0x264 <DIO_SetPinDirection+0x50>
+ 26c:	80 95       	com	r24
+ 26e:	82 23       	and	r24, r18
+ 270:	87 bb       	out	0x17, r24	; 23
+ 272:	08 95       	ret
 		else
 		Set_Bit(DDRB, Pin);
- 2b6:	27 b3       	in	r18, 0x17	; 23
- 2b8:	81 e0       	ldi	r24, 0x01	; 1
- 2ba:	90 e0       	ldi	r25, 0x00	; 0
- 2bc:	02 c0       	rjmp	.+4      	; 0x2c2 <DIO_SetPinDirection+0x6c>
- 2be:	88 0f       	add	r24, r24
- 2c0:	99 1f       	adc	r25, r25
- 2c2:	6a 95       	dec	r22
- 2c4:	e2 f7       	brpl	.-8      	; 0x2be <DIO_SetPinDirection+0x68>
- 2c6:	82 2b       	or	r24, r18
- 2c8:	87 bb       	out	0x17, r24	; 23
- 2ca:	08 95       	ret
+ 274:	27 b3       	in	r18, 0x17	; 23
+ 276:	81 e0       	ldi	r24, 0x01	; 1
+ 278:	90 e0       	ldi	r25, 0x00	; 0
+ 27a:	02 c0       	rjmp	.+4      	; 0x280 <DIO_SetPinDirection+0x6c>
+ 27c:	88 0f       	add	r24, r24
+ 27e:	99 1f       	adc	r25, r25
+ 280:	6a 95       	dec	r22
+ 282:	e2 f7       	brpl	.-8      	; 0x27c <DIO_SetPinDirection+0x68>
+ 284:	82 2b       	or	r24, r18
+ 286:	87 bb       	out	0x17, r24	; 23
+ 288:	08 95       	ret
 		break;
 		case DIO_PORTC:
 		if(State == DIO_Input)
- 2cc:	41 11       	cpse	r20, r1
- 2ce:	0c c0       	rjmp	.+24     	; 0x2e8 <DIO_SetPinDirection+0x92>
+ 28a:	41 11       	cpse	r20, r1
+ 28c:	0c c0       	rjmp	.+24     	; 0x2a6 <DIO_SetPinDirection+0x92>
 		Clear_Bit(DDRC, Pin);
- 2d0:	24 b3       	in	r18, 0x14	; 20
- 2d2:	81 e0       	ldi	r24, 0x01	; 1
- 2d4:	90 e0       	ldi	r25, 0x00	; 0
- 2d6:	02 c0       	rjmp	.+4      	; 0x2dc <DIO_SetPinDirection+0x86>
- 2d8:	88 0f       	add	r24, r24
- 2da:	99 1f       	adc	r25, r25
- 2dc:	6a 95       	dec	r22
- 2de:	e2 f7       	brpl	.-8      	; 0x2d8 <DIO_SetPinDirection+0x82>
- 2e0:	80 95       	com	r24
- 2e2:	82 23       	and	r24, r18
- 2e4:	84 bb       	out	0x14, r24	; 20
- 2e6:	08 95       	ret
+ 28e:	24 b3       	in	r18, 0x14	; 20
+ 290:	81 e0       	ldi	r24, 0x01	; 1
+ 292:	90 e0       	ldi	r25, 0x00	; 0
+ 294:	02 c0       	rjmp	.+4      	; 0x29a <DIO_SetPinDirection+0x86>
+ 296:	88 0f       	add	r24, r24
+ 298:	99 1f       	adc	r25, r25
+ 29a:	6a 95       	dec	r22
+ 29c:	e2 f7       	brpl	.-8      	; 0x296 <DIO_SetPinDirection+0x82>
+ 29e:	80 95       	com	r24
+ 2a0:	82 23       	and	r24, r18
+ 2a2:	84 bb       	out	0x14, r24	; 20
+ 2a4:	08 95       	ret
 		else
 		Set_Bit(DDRC, Pin);
- 2e8:	24 b3       	in	r18, 0x14	; 20
- 2ea:	81 e0       	ldi	r24, 0x01	; 1
- 2ec:	90 e0       	ldi	r25, 0x00	; 0
- 2ee:	02 c0       	rjmp	.+4      	; 0x2f4 <DIO_SetPinDirection+0x9e>
- 2f0:	88 0f       	add	r24, r24
- 2f2:	99 1f       	adc	r25, r25
- 2f4:	6a 95       	dec	r22
- 2f6:	e2 f7       	brpl	.-8      	; 0x2f0 <DIO_SetPinDirection+0x9a>
- 2f8:	82 2b       	or	r24, r18
- 2fa:	84 bb       	out	0x14, r24	; 20
- 2fc:	08 95       	ret
+ 2a6:	24 b3       	in	r18, 0x14	; 20
+ 2a8:	81 e0       	ldi	r24, 0x01	; 1
+ 2aa:	90 e0       	ldi	r25, 0x00	; 0
+ 2ac:	02 c0       	rjmp	.+4      	; 0x2b2 <DIO_SetPinDirection+0x9e>
+ 2ae:	88 0f       	add	r24, r24
+ 2b0:	99 1f       	adc	r25, r25
+ 2b2:	6a 95       	dec	r22
+ 2b4:	e2 f7       	brpl	.-8      	; 0x2ae <DIO_SetPinDirection+0x9a>
+ 2b6:	82 2b       	or	r24, r18
+ 2b8:	84 bb       	out	0x14, r24	; 20
+ 2ba:	08 95       	ret
 		break;
 		case DIO_PORTD:
 		if(State == DIO_Input)
- 2fe:	41 11       	cpse	r20, r1
- 300:	0c c0       	rjmp	.+24     	; 0x31a <DIO_SetPinDirection+0xc4>
+ 2bc:	41 11       	cpse	r20, r1
+ 2be:	0c c0       	rjmp	.+24     	; 0x2d8 <DIO_SetPinDirection+0xc4>
 		Clear_Bit(DDRD, Pin);
- 302:	21 b3       	in	r18, 0x11	; 17
- 304:	81 e0       	ldi	r24, 0x01	; 1
- 306:	90 e0       	ldi	r25, 0x00	; 0
- 308:	02 c0       	rjmp	.+4      	; 0x30e <DIO_SetPinDirection+0xb8>
- 30a:	88 0f       	add	r24, r24
- 30c:	99 1f       	adc	r25, r25
- 30e:	6a 95       	dec	r22
- 310:	e2 f7       	brpl	.-8      	; 0x30a <DIO_SetPinDirection+0xb4>
- 312:	80 95       	com	r24
- 314:	82 23       	and	r24, r18
- 316:	81 bb       	out	0x11, r24	; 17
- 318:	08 95       	ret
+ 2c0:	21 b3       	in	r18, 0x11	; 17
+ 2c2:	81 e0       	ldi	r24, 0x01	; 1
+ 2c4:	90 e0       	ldi	r25, 0x00	; 0
+ 2c6:	02 c0       	rjmp	.+4      	; 0x2cc <DIO_SetPinDirection+0xb8>
+ 2c8:	88 0f       	add	r24, r24
+ 2ca:	99 1f       	adc	r25, r25
+ 2cc:	6a 95       	dec	r22
+ 2ce:	e2 f7       	brpl	.-8      	; 0x2c8 <DIO_SetPinDirection+0xb4>
+ 2d0:	80 95       	com	r24
+ 2d2:	82 23       	and	r24, r18
+ 2d4:	81 bb       	out	0x11, r24	; 17
+ 2d6:	08 95       	ret
 		else
 		Set_Bit(DDRD, Pin);
- 31a:	21 b3       	in	r18, 0x11	; 17
- 31c:	81 e0       	ldi	r24, 0x01	; 1
- 31e:	90 e0       	ldi	r25, 0x00	; 0
- 320:	02 c0       	rjmp	.+4      	; 0x326 <DIO_SetPinDirection+0xd0>
- 322:	88 0f       	add	r24, r24
- 324:	99 1f       	adc	r25, r25
- 326:	6a 95       	dec	r22
- 328:	e2 f7       	brpl	.-8      	; 0x322 <DIO_SetPinDirection+0xcc>
- 32a:	82 2b       	or	r24, r18
- 32c:	81 bb       	out	0x11, r24	; 17
- 32e:	08 95       	ret
+ 2d8:	21 b3       	in	r18, 0x11	; 17
+ 2da:	81 e0       	ldi	r24, 0x01	; 1
+ 2dc:	90 e0       	ldi	r25, 0x00	; 0
+ 2de:	02 c0       	rjmp	.+4      	; 0x2e4 <DIO_SetPinDirection+0xd0>
+ 2e0:	88 0f       	add	r24, r24
+ 2e2:	99 1f       	adc	r25, r25
+ 2e4:	6a 95       	dec	r22
+ 2e6:	e2 f7       	brpl	.-8      	; 0x2e0 <DIO_SetPinDirection+0xcc>
+ 2e8:	82 2b       	or	r24, r18
+ 2ea:	81 bb       	out	0x11, r24	; 17
+ 2ec:	08 95       	ret
 
-00000330 <DIO_SetPinValue>:
+000002ee <DIO_SetPinValue>:
 		break;
 	}
 }
 void DIO_SetPinValue(port Port, pin Pin, status Status)
 {
 	switch(Port)
- 330:	81 30       	cpi	r24, 0x01	; 1
- 332:	01 f1       	breq	.+64     	; 0x374 <DIO_SetPinValue+0x44>
- 334:	30 f0       	brcs	.+12     	; 0x342 <DIO_SetPinValue+0x12>
- 336:	82 30       	cpi	r24, 0x02	; 2
- 338:	b1 f1       	breq	.+108    	; 0x3a6 <DIO_SetPinValue+0x76>
- 33a:	83 30       	cpi	r24, 0x03	; 3
- 33c:	09 f4       	brne	.+2      	; 0x340 <DIO_SetPinValue+0x10>
- 33e:	4c c0       	rjmp	.+152    	; 0x3d8 <DIO_SetPinValue+0xa8>
- 340:	08 95       	ret
+ 2ee:	81 30       	cpi	r24, 0x01	; 1
+ 2f0:	01 f1       	breq	.+64     	; 0x332 <DIO_SetPinValue+0x44>
+ 2f2:	30 f0       	brcs	.+12     	; 0x300 <DIO_SetPinValue+0x12>
+ 2f4:	82 30       	cpi	r24, 0x02	; 2
+ 2f6:	b1 f1       	breq	.+108    	; 0x364 <DIO_SetPinValue+0x76>
+ 2f8:	83 30       	cpi	r24, 0x03	; 3
+ 2fa:	09 f4       	brne	.+2      	; 0x2fe <DIO_SetPinValue+0x10>
+ 2fc:	4c c0       	rjmp	.+152    	; 0x396 <DIO_SetPinValue+0xa8>
+ 2fe:	08 95       	ret
 	{
 		case DIO_PORTA:
 		if(Status == DIO_Low) Clear_Bit(PORTA, Pin);
- 342:	41 11       	cpse	r20, r1
- 344:	0c c0       	rjmp	.+24     	; 0x35e <DIO_SetPinValue+0x2e>
- 346:	2b b3       	in	r18, 0x1b	; 27
- 348:	81 e0       	ldi	r24, 0x01	; 1
- 34a:	90 e0       	ldi	r25, 0x00	; 0
- 34c:	02 c0       	rjmp	.+4      	; 0x352 <DIO_SetPinValue+0x22>
- 34e:	88 0f       	add	r24, r24
- 350:	99 1f       	adc	r25, r25
- 352:	6a 95       	dec	r22
- 354:	e2 f7       	brpl	.-8      	; 0x34e <DIO_SetPinValue+0x1e>
- 356:	80 95       	com	r24
- 358:	82 23       	and	r24, r18
- 35a:	8b bb       	out	0x1b, r24	; 27
- 35c:	08 95       	ret
+ 300:	41 11       	cpse	r20, r1
+ 302:	0c c0       	rjmp	.+24     	; 0x31c <DIO_SetPinValue+0x2e>
+ 304:	2b b3       	in	r18, 0x1b	; 27
+ 306:	81 e0       	ldi	r24, 0x01	; 1
+ 308:	90 e0       	ldi	r25, 0x00	; 0
+ 30a:	02 c0       	rjmp	.+4      	; 0x310 <DIO_SetPinValue+0x22>
+ 30c:	88 0f       	add	r24, r24
+ 30e:	99 1f       	adc	r25, r25
+ 310:	6a 95       	dec	r22
+ 312:	e2 f7       	brpl	.-8      	; 0x30c <DIO_SetPinValue+0x1e>
+ 314:	80 95       	com	r24
+ 316:	82 23       	and	r24, r18
+ 318:	8b bb       	out	0x1b, r24	; 27
+ 31a:	08 95       	ret
 		else
 		Set_Bit(PORTA, Pin);
- 35e:	2b b3       	in	r18, 0x1b	; 27
- 360:	81 e0       	ldi	r24, 0x01	; 1
- 362:	90 e0       	ldi	r25, 0x00	; 0
- 364:	02 c0       	rjmp	.+4      	; 0x36a <DIO_SetPinValue+0x3a>
- 366:	88 0f       	add	r24, r24
- 368:	99 1f       	adc	r25, r25
- 36a:	6a 95       	dec	r22
- 36c:	e2 f7       	brpl	.-8      	; 0x366 <DIO_SetPinValue+0x36>
- 36e:	82 2b       	or	r24, r18
- 370:	8b bb       	out	0x1b, r24	; 27
- 372:	08 95       	ret
+ 31c:	2b b3       	in	r18, 0x1b	; 27
+ 31e:	81 e0       	ldi	r24, 0x01	; 1
+ 320:	90 e0       	ldi	r25, 0x00	; 0
+ 322:	02 c0       	rjmp	.+4      	; 0x328 <DIO_SetPinValue+0x3a>
+ 324:	88 0f       	add	r24, r24
+ 326:	99 1f       	adc	r25, r25
+ 328:	6a 95       	dec	r22
+ 32a:	e2 f7       	brpl	.-8      	; 0x324 <DIO_SetPinValue+0x36>
+ 32c:	82 2b       	or	r24, r18
+ 32e:	8b bb       	out	0x1b, r24	; 27
+ 330:	08 95       	ret
 		break;
 		case DIO_PORTB:
 		if(Status == DIO_Low)
- 374:	41 11       	cpse	r20, r1
- 376:	0c c0       	rjmp	.+24     	; 0x390 <DIO_SetPinValue+0x60>
+ 332:	41 11       	cpse	r20, r1
+ 334:	0c c0       	rjmp	.+24     	; 0x34e <DIO_SetPinValue+0x60>
 		Clear_Bit(PORTB, Pin);
- 378:	28 b3       	in	r18, 0x18	; 24
- 37a:	81 e0       	ldi	r24, 0x01	; 1
- 37c:	90 e0       	ldi	r25, 0x00	; 0
- 37e:	02 c0       	rjmp	.+4      	; 0x384 <DIO_SetPinValue+0x54>
- 380:	88 0f       	add	r24, r24
- 382:	99 1f       	adc	r25, r25
- 384:	6a 95       	dec	r22
- 386:	e2 f7       	brpl	.-8      	; 0x380 <DIO_SetPinValue+0x50>
- 388:	80 95       	com	r24
- 38a:	82 23       	and	r24, r18
- 38c:	88 bb       	out	0x18, r24	; 24
- 38e:	08 95       	ret
+ 336:	28 b3       	in	r18, 0x18	; 24
+ 338:	81 e0       	ldi	r24, 0x01	; 1
+ 33a:	90 e0       	ldi	r25, 0x00	; 0
+ 33c:	02 c0       	rjmp	.+4      	; 0x342 <DIO_SetPinValue+0x54>
+ 33e:	88 0f       	add	r24, r24
+ 340:	99 1f       	adc	r25, r25
+ 342:	6a 95       	dec	r22
+ 344:	e2 f7       	brpl	.-8      	; 0x33e <DIO_SetPinValue+0x50>
+ 346:	80 95       	com	r24
+ 348:	82 23       	and	r24, r18
+ 34a:	88 bb       	out	0x18, r24	; 24
+ 34c:	08 95       	ret
 		else
 		Set_Bit(PORTB, Pin);
- 390:	28 b3       	in	r18, 0x18	; 24
- 392:	81 e0       	ldi	r24, 0x01	; 1
- 394:	90 e0       	ldi	r25, 0x00	; 0
- 396:	02 c0       	rjmp	.+4      	; 0x39c <DIO_SetPinValue+0x6c>
- 398:	88 0f       	add	r24, r24
- 39a:	99 1f       	adc	r25, r25
- 39c:	6a 95       	dec	r22
- 39e:	e2 f7       	brpl	.-8      	; 0x398 <DIO_SetPinValue+0x68>
- 3a0:	82 2b       	or	r24, r18
- 3a2:	88 bb       	out	0x18, r24	; 24
- 3a4:	08 95       	ret
+ 34e:	28 b3       	in	r18, 0x18	; 24
+ 350:	81 e0       	ldi	r24, 0x01	; 1
+ 352:	90 e0       	ldi	r25, 0x00	; 0
+ 354:	02 c0       	rjmp	.+4      	; 0x35a <DIO_SetPinValue+0x6c>
+ 356:	88 0f       	add	r24, r24
+ 358:	99 1f       	adc	r25, r25
+ 35a:	6a 95       	dec	r22
+ 35c:	e2 f7       	brpl	.-8      	; 0x356 <DIO_SetPinValue+0x68>
+ 35e:	82 2b       	or	r24, r18
+ 360:	88 bb       	out	0x18, r24	; 24
+ 362:	08 95       	ret
 		break;
 		case DIO_PORTC:
 		if(Status == DIO_Low)
- 3a6:	41 11       	cpse	r20, r1
- 3a8:	0c c0       	rjmp	.+24     	; 0x3c2 <DIO_SetPinValue+0x92>
+ 364:	41 11       	cpse	r20, r1
+ 366:	0c c0       	rjmp	.+24     	; 0x380 <DIO_SetPinValue+0x92>
 		Clear_Bit(PORTC, Pin);
- 3aa:	25 b3       	in	r18, 0x15	; 21
- 3ac:	81 e0       	ldi	r24, 0x01	; 1
- 3ae:	90 e0       	ldi	r25, 0x00	; 0
- 3b0:	02 c0       	rjmp	.+4      	; 0x3b6 <DIO_SetPinValue+0x86>
- 3b2:	88 0f       	add	r24, r24
- 3b4:	99 1f       	adc	r25, r25
- 3b6:	6a 95       	dec	r22
- 3b8:	e2 f7       	brpl	.-8      	; 0x3b2 <DIO_SetPinValue+0x82>
- 3ba:	80 95       	com	r24
- 3bc:	82 23       	and	r24, r18
- 3be:	85 bb       	out	0x15, r24	; 21
- 3c0:	08 95       	ret
+ 368:	25 b3       	in	r18, 0x15	; 21
+ 36a:	81 e0       	ldi	r24, 0x01	; 1
+ 36c:	90 e0       	ldi	r25, 0x00	; 0
+ 36e:	02 c0       	rjmp	.+4      	; 0x374 <DIO_SetPinValue+0x86>
+ 370:	88 0f       	add	r24, r24
+ 372:	99 1f       	adc	r25, r25
+ 374:	6a 95       	dec	r22
+ 376:	e2 f7       	brpl	.-8      	; 0x370 <DIO_SetPinValue+0x82>
+ 378:	80 95       	com	r24
+ 37a:	82 23       	and	r24, r18
+ 37c:	85 bb       	out	0x15, r24	; 21
+ 37e:	08 95       	ret
 		else
 		Set_Bit(PORTC, Pin);
- 3c2:	25 b3       	in	r18, 0x15	; 21
- 3c4:	81 e0       	ldi	r24, 0x01	; 1
- 3c6:	90 e0       	ldi	r25, 0x00	; 0
- 3c8:	02 c0       	rjmp	.+4      	; 0x3ce <DIO_SetPinValue+0x9e>
- 3ca:	88 0f       	add	r24, r24
- 3cc:	99 1f       	adc	r25, r25
- 3ce:	6a 95       	dec	r22
- 3d0:	e2 f7       	brpl	.-8      	; 0x3ca <DIO_SetPinValue+0x9a>
- 3d2:	82 2b       	or	r24, r18
- 3d4:	85 bb       	out	0x15, r24	; 21
- 3d6:	08 95       	ret
+ 380:	25 b3       	in	r18, 0x15	; 21
+ 382:	81 e0       	ldi	r24, 0x01	; 1
+ 384:	90 e0       	ldi	r25, 0x00	; 0
+ 386:	02 c0       	rjmp	.+4      	; 0x38c <DIO_SetPinValue+0x9e>
+ 388:	88 0f       	add	r24, r24
+ 38a:	99 1f       	adc	r25, r25
+ 38c:	6a 95       	dec	r22
+ 38e:	e2 f7       	brpl	.-8      	; 0x388 <DIO_SetPinValue+0x9a>
+ 390:	82 2b       	or	r24, r18
+ 392:	85 bb       	out	0x15, r24	; 21
+ 394:	08 95       	ret
 		break;
 		case DIO_PORTD:
 		if(Status == DIO_Low)
- 3d8:	41 11       	cpse	r20, r1
- 3da:	0c c0       	rjmp	.+24     	; 0x3f4 <DIO_SetPinValue+0xc4>
+ 396:	41 11       	cpse	r20, r1
+ 398:	0c c0       	rjmp	.+24     	; 0x3b2 <DIO_SetPinValue+0xc4>
 		Clear_Bit(PORTD, Pin);
- 3dc:	22 b3       	in	r18, 0x12	; 18
- 3de:	81 e0       	ldi	r24, 0x01	; 1
- 3e0:	90 e0       	ldi	r25, 0x00	; 0
- 3e2:	02 c0       	rjmp	.+4      	; 0x3e8 <DIO_SetPinValue+0xb8>
- 3e4:	88 0f       	add	r24, r24
- 3e6:	99 1f       	adc	r25, r25
- 3e8:	6a 95       	dec	r22
- 3ea:	e2 f7       	brpl	.-8      	; 0x3e4 <DIO_SetPinValue+0xb4>
- 3ec:	80 95       	com	r24
- 3ee:	82 23       	and	r24, r18
- 3f0:	82 bb       	out	0x12, r24	; 18
- 3f2:	08 95       	ret
+ 39a:	22 b3       	in	r18, 0x12	; 18
+ 39c:	81 e0       	ldi	r24, 0x01	; 1
+ 39e:	90 e0       	ldi	r25, 0x00	; 0
+ 3a0:	02 c0       	rjmp	.+4      	; 0x3a6 <DIO_SetPinValue+0xb8>
+ 3a2:	88 0f       	add	r24, r24
+ 3a4:	99 1f       	adc	r25, r25
+ 3a6:	6a 95       	dec	r22
+ 3a8:	e2 f7       	brpl	.-8      	; 0x3a2 <DIO_SetPinValue+0xb4>
+ 3aa:	80 95       	com	r24
+ 3ac:	82 23       	and	r24, r18
+ 3ae:	82 bb       	out	0x12, r24	; 18
+ 3b0:	08 95       	ret
 		else
 		Set_Bit(PORTD, Pin);
- 3f4:	22 b3       	in	r18, 0x12	; 18
- 3f6:	81 e0       	ldi	r24, 0x01	; 1
- 3f8:	90 e0       	ldi	r25, 0x00	; 0
- 3fa:	02 c0       	rjmp	.+4      	; 0x400 <__EEPROM_REGION_LENGTH__>
- 3fc:	88 0f       	add	r24, r24
- 3fe:	99 1f       	adc	r25, r25
- 400:	6a 95       	dec	r22
- 402:	e2 f7       	brpl	.-8      	; 0x3fc <DIO_SetPinValue+0xcc>
- 404:	82 2b       	or	r24, r18
- 406:	82 bb       	out	0x12, r24	; 18
- 408:	08 95       	ret
+ 3b2:	22 b3       	in	r18, 0x12	; 18
+ 3b4:	81 e0       	ldi	r24, 0x01	; 1
+ 3b6:	90 e0       	ldi	r25, 0x00	; 0
+ 3b8:	02 c0       	rjmp	.+4      	; 0x3be <DIO_SetPinValue+0xd0>
+ 3ba:	88 0f       	add	r24, r24
+ 3bc:	99 1f       	adc	r25, r25
+ 3be:	6a 95       	dec	r22
+ 3c0:	e2 f7       	brpl	.-8      	; 0x3ba <DIO_SetPinValue+0xcc>
+ 3c2:	82 2b       	or	r24, r18
+ 3c4:	82 bb       	out	0x12, r24	; 18
+ 3c6:	08 95       	ret
 
-0000040a <Timer0_FPWM_Initialize>:
+000003c8 <Timer0_FPWM_Initialize>:
 	TCNT0 = OCR - (Count % OCR);
 }
 
 void Timer0_FPWM_Initialize(void)
 {
 	Set_Bit(DDRB, OC0);
- 40a:	87 b3       	in	r24, 0x17	; 23
- 40c:	88 60       	ori	r24, 0x08	; 8
- 40e:	87 bb       	out	0x17, r24	; 23
+ 3c8:	87 b3       	in	r24, 0x17	; 23
+ 3ca:	88 60       	ori	r24, 0x08	; 8
+ 3cc:	87 bb       	out	0x17, r24	; 23
 	Set_Bit(TCCR0, PWM0);
- 410:	83 b7       	in	r24, 0x33	; 51
- 412:	80 64       	ori	r24, 0x40	; 64
- 414:	83 bf       	out	0x33, r24	; 51
+ 3ce:	83 b7       	in	r24, 0x33	; 51
+ 3d0:	80 64       	ori	r24, 0x40	; 64
+ 3d2:	83 bf       	out	0x33, r24	; 51
 	Set_Bit(TCCR0, CTC0);
- 416:	83 b7       	in	r24, 0x33	; 51
- 418:	88 60       	ori	r24, 0x08	; 8
- 41a:	83 bf       	out	0x33, r24	; 51
- 41c:	08 95       	ret
+ 3d4:	83 b7       	in	r24, 0x33	; 51
+ 3d6:	88 60       	ori	r24, 0x08	; 8
+ 3d8:	83 bf       	out	0x33, r24	; 51
+ 3da:	08 95       	ret
 
-0000041e <Timer0_FPWM_Start>:
+000003dc <Timer0_FPWM_Start>:
 }
 void Timer0_FPWM_Start(prescale Prescale)
 {
 	switch(Prescale)
- 41e:	82 30       	cpi	r24, 0x02	; 2
- 420:	01 f1       	breq	.+64     	; 0x462 <Timer0_FPWM_Start+0x44>
- 422:	28 f4       	brcc	.+10     	; 0x42e <Timer0_FPWM_Start+0x10>
- 424:	88 23       	and	r24, r24
- 426:	49 f0       	breq	.+18     	; 0x43a <Timer0_FPWM_Start+0x1c>
- 428:	81 30       	cpi	r24, 0x01	; 1
- 42a:	89 f0       	breq	.+34     	; 0x44e <Timer0_FPWM_Start+0x30>
- 42c:	08 95       	ret
- 42e:	84 30       	cpi	r24, 0x04	; 4
- 430:	61 f1       	breq	.+88     	; 0x48a <Timer0_FPWM_Start+0x6c>
- 432:	08 f1       	brcs	.+66     	; 0x476 <Timer0_FPWM_Start+0x58>
- 434:	85 30       	cpi	r24, 0x05	; 5
- 436:	99 f1       	breq	.+102    	; 0x49e <Timer0_FPWM_Start+0x80>
- 438:	08 95       	ret
+ 3dc:	82 30       	cpi	r24, 0x02	; 2
+ 3de:	01 f1       	breq	.+64     	; 0x420 <__EEPROM_REGION_LENGTH__+0x20>
+ 3e0:	28 f4       	brcc	.+10     	; 0x3ec <Timer0_FPWM_Start+0x10>
+ 3e2:	88 23       	and	r24, r24
+ 3e4:	49 f0       	breq	.+18     	; 0x3f8 <Timer0_FPWM_Start+0x1c>
+ 3e6:	81 30       	cpi	r24, 0x01	; 1
+ 3e8:	89 f0       	breq	.+34     	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
+ 3ea:	08 95       	ret
+ 3ec:	84 30       	cpi	r24, 0x04	; 4
+ 3ee:	61 f1       	breq	.+88     	; 0x448 <__EEPROM_REGION_LENGTH__+0x48>
+ 3f0:	08 f1       	brcs	.+66     	; 0x434 <__EEPROM_REGION_LENGTH__+0x34>
+ 3f2:	85 30       	cpi	r24, 0x05	; 5
+ 3f4:	99 f1       	breq	.+102    	; 0x45c <__EEPROM_REGION_LENGTH__+0x5c>
+ 3f6:	08 95       	ret
 	{
 		case Timer0_NO_Clock:
 		Clear_Bit(TCCR0, CS00);
- 43a:	83 b7       	in	r24, 0x33	; 51
- 43c:	8e 7f       	andi	r24, 0xFE	; 254
- 43e:	83 bf       	out	0x33, r24	; 51
+ 3f8:	83 b7       	in	r24, 0x33	; 51
+ 3fa:	8e 7f       	andi	r24, 0xFE	; 254
+ 3fc:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS01);
- 440:	83 b7       	in	r24, 0x33	; 51
- 442:	8d 7f       	andi	r24, 0xFD	; 253
- 444:	83 bf       	out	0x33, r24	; 51
+ 3fe:	83 b7       	in	r24, 0x33	; 51
+ 400:	8d 7f       	andi	r24, 0xFD	; 253
+ 402:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS02);
- 446:	83 b7       	in	r24, 0x33	; 51
- 448:	8b 7f       	andi	r24, 0xFB	; 251
- 44a:	83 bf       	out	0x33, r24	; 51
+ 404:	83 b7       	in	r24, 0x33	; 51
+ 406:	8b 7f       	andi	r24, 0xFB	; 251
+ 408:	83 bf       	out	0x33, r24	; 51
 		break;
- 44c:	08 95       	ret
+ 40a:	08 95       	ret
 		case Timer0_NO_PRE:
 		Set_Bit(TCCR0, CS00);
- 44e:	83 b7       	in	r24, 0x33	; 51
- 450:	81 60       	ori	r24, 0x01	; 1
- 452:	83 bf       	out	0x33, r24	; 51
+ 40c:	83 b7       	in	r24, 0x33	; 51
+ 40e:	81 60       	ori	r24, 0x01	; 1
+ 410:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS01);
- 454:	83 b7       	in	r24, 0x33	; 51
- 456:	8d 7f       	andi	r24, 0xFD	; 253
- 458:	83 bf       	out	0x33, r24	; 51
+ 412:	83 b7       	in	r24, 0x33	; 51
+ 414:	8d 7f       	andi	r24, 0xFD	; 253
+ 416:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS02);
- 45a:	83 b7       	in	r24, 0x33	; 51
- 45c:	8b 7f       	andi	r24, 0xFB	; 251
- 45e:	83 bf       	out	0x33, r24	; 51
+ 418:	83 b7       	in	r24, 0x33	; 51
+ 41a:	8b 7f       	andi	r24, 0xFB	; 251
+ 41c:	83 bf       	out	0x33, r24	; 51
 		break;
- 460:	08 95       	ret
+ 41e:	08 95       	ret
 		case Timer0_PRE_8:
 		Clear_Bit(TCCR0, CS00);
- 462:	83 b7       	in	r24, 0x33	; 51
- 464:	8e 7f       	andi	r24, 0xFE	; 254
- 466:	83 bf       	out	0x33, r24	; 51
+ 420:	83 b7       	in	r24, 0x33	; 51
+ 422:	8e 7f       	andi	r24, 0xFE	; 254
+ 424:	83 bf       	out	0x33, r24	; 51
 		Set_Bit(TCCR0, CS01);
- 468:	83 b7       	in	r24, 0x33	; 51
- 46a:	82 60       	ori	r24, 0x02	; 2
- 46c:	83 bf       	out	0x33, r24	; 51
+ 426:	83 b7       	in	r24, 0x33	; 51
+ 428:	82 60       	ori	r24, 0x02	; 2
+ 42a:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS02);
- 46e:	83 b7       	in	r24, 0x33	; 51
- 470:	8b 7f       	andi	r24, 0xFB	; 251
- 472:	83 bf       	out	0x33, r24	; 51
+ 42c:	83 b7       	in	r24, 0x33	; 51
+ 42e:	8b 7f       	andi	r24, 0xFB	; 251
+ 430:	83 bf       	out	0x33, r24	; 51
 		break;
- 474:	08 95       	ret
+ 432:	08 95       	ret
 		case Timer0_PRE_64:
 		Set_Bit(TCCR0, CS00);
- 476:	83 b7       	in	r24, 0x33	; 51
- 478:	81 60       	ori	r24, 0x01	; 1
- 47a:	83 bf       	out	0x33, r24	; 51
+ 434:	83 b7       	in	r24, 0x33	; 51
+ 436:	81 60       	ori	r24, 0x01	; 1
+ 438:	83 bf       	out	0x33, r24	; 51
 		Set_Bit(TCCR0, CS01);
- 47c:	83 b7       	in	r24, 0x33	; 51
- 47e:	82 60       	ori	r24, 0x02	; 2
- 480:	83 bf       	out	0x33, r24	; 51
+ 43a:	83 b7       	in	r24, 0x33	; 51
+ 43c:	82 60       	ori	r24, 0x02	; 2
+ 43e:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS02);
- 482:	83 b7       	in	r24, 0x33	; 51
- 484:	8b 7f       	andi	r24, 0xFB	; 251
- 486:	83 bf       	out	0x33, r24	; 51
+ 440:	83 b7       	in	r24, 0x33	; 51
+ 442:	8b 7f       	andi	r24, 0xFB	; 251
+ 444:	83 bf       	out	0x33, r24	; 51
 		break;
- 488:	08 95       	ret
+ 446:	08 95       	ret
 		case Timer0_PRE_256:
 		Clear_Bit(TCCR0, CS00);
- 48a:	83 b7       	in	r24, 0x33	; 51
- 48c:	8e 7f       	andi	r24, 0xFE	; 254
- 48e:	83 bf       	out	0x33, r24	; 51
+ 448:	83 b7       	in	r24, 0x33	; 51
+ 44a:	8e 7f       	andi	r24, 0xFE	; 254
+ 44c:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS01);
- 490:	83 b7       	in	r24, 0x33	; 51
- 492:	8d 7f       	andi	r24, 0xFD	; 253
- 494:	83 bf       	out	0x33, r24	; 51
+ 44e:	83 b7       	in	r24, 0x33	; 51
+ 450:	8d 7f       	andi	r24, 0xFD	; 253
+ 452:	83 bf       	out	0x33, r24	; 51
 		Set_Bit(TCCR0, CS02);
- 496:	83 b7       	in	r24, 0x33	; 51
- 498:	84 60       	ori	r24, 0x04	; 4
- 49a:	83 bf       	out	0x33, r24	; 51
+ 454:	83 b7       	in	r24, 0x33	; 51
+ 456:	84 60       	ori	r24, 0x04	; 4
+ 458:	83 bf       	out	0x33, r24	; 51
 		break;
- 49c:	08 95       	ret
+ 45a:	08 95       	ret
 		case Timer0_PRE_1024:
 		Set_Bit(TCCR0, CS00);
- 49e:	83 b7       	in	r24, 0x33	; 51
- 4a0:	81 60       	ori	r24, 0x01	; 1
- 4a2:	83 bf       	out	0x33, r24	; 51
+ 45c:	83 b7       	in	r24, 0x33	; 51
+ 45e:	81 60       	ori	r24, 0x01	; 1
+ 460:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, CS01);
- 4a4:	83 b7       	in	r24, 0x33	; 51
- 4a6:	8d 7f       	andi	r24, 0xFD	; 253
- 4a8:	83 bf       	out	0x33, r24	; 51
+ 462:	83 b7       	in	r24, 0x33	; 51
+ 464:	8d 7f       	andi	r24, 0xFD	; 253
+ 466:	83 bf       	out	0x33, r24	; 51
 		Set_Bit(TCCR0, CS02);
- 4aa:	83 b7       	in	r24, 0x33	; 51
- 4ac:	84 60       	ori	r24, 0x04	; 4
- 4ae:	83 bf       	out	0x33, r24	; 51
- 4b0:	08 95       	ret
+ 468:	83 b7       	in	r24, 0x33	; 51
+ 46a:	84 60       	ori	r24, 0x04	; 4
+ 46c:	83 bf       	out	0x33, r24	; 51
+ 46e:	08 95       	ret
 
-000004b2 <Timer0_FPWM_Stop>:
+00000470 <Timer0_FPWM_Stop>:
 		break;
 	}
 }
 void Timer0_FPWM_Stop(void)
 {
 	Clear_Bit(TCCR0, CS00);
- 4b2:	83 b7       	in	r24, 0x33	; 51
- 4b4:	8e 7f       	andi	r24, 0xFE	; 254
- 4b6:	83 bf       	out	0x33, r24	; 51
+ 470:	83 b7       	in	r24, 0x33	; 51
+ 472:	8e 7f       	andi	r24, 0xFE	; 254
+ 474:	83 bf       	out	0x33, r24	; 51
 	Clear_Bit(TCCR0, CS01);
- 4b8:	83 b7       	in	r24, 0x33	; 51
- 4ba:	8d 7f       	andi	r24, 0xFD	; 253
- 4bc:	83 bf       	out	0x33, r24	; 51
+ 476:	83 b7       	in	r24, 0x33	; 51
+ 478:	8d 7f       	andi	r24, 0xFD	; 253
+ 47a:	83 bf       	out	0x33, r24	; 51
 	Clear_Bit(TCCR0, CS02);
- 4be:	83 b7       	in	r24, 0x33	; 51
- 4c0:	8b 7f       	andi	r24, 0xFB	; 251
- 4c2:	83 bf       	out	0x33, r24	; 51
- 4c4:	08 95       	ret
+ 47c:	83 b7       	in	r24, 0x33	; 51
+ 47e:	8b 7f       	andi	r24, 0xFB	; 251
+ 480:	83 bf       	out	0x33, r24	; 51
+ 482:	08 95       	ret
 
-000004c6 <Timer0_FPWM_SetDuty>:
+00000484 <Timer0_FPWM_SetDuty>:
 }
 void Timer0_FPWM_SetDuty(pinmode Pinmode, u8 Dutycycle)
 {
 	switch(Pinmode)
- 4c6:	81 30       	cpi	r24, 0x01	; 1
- 4c8:	59 f0       	breq	.+22     	; 0x4e0 <Timer0_FPWM_SetDuty+0x1a>
- 4ca:	18 f0       	brcs	.+6      	; 0x4d2 <Timer0_FPWM_SetDuty+0xc>
- 4cc:	82 30       	cpi	r24, 0x02	; 2
- 4ce:	b9 f0       	breq	.+46     	; 0x4fe <Timer0_FPWM_SetDuty+0x38>
- 4d0:	08 95       	ret
+ 484:	81 30       	cpi	r24, 0x01	; 1
+ 486:	59 f0       	breq	.+22     	; 0x49e <Timer0_FPWM_SetDuty+0x1a>
+ 488:	18 f0       	brcs	.+6      	; 0x490 <Timer0_FPWM_SetDuty+0xc>
+ 48a:	82 30       	cpi	r24, 0x02	; 2
+ 48c:	b9 f0       	breq	.+46     	; 0x4bc <Timer0_FPWM_SetDuty+0x38>
+ 48e:	08 95       	ret
 	{
 		case PWM_Disconnected:
 		Clear_Bit(TCCR0, COM00);
- 4d2:	83 b7       	in	r24, 0x33	; 51
- 4d4:	8f 7e       	andi	r24, 0xEF	; 239
- 4d6:	83 bf       	out	0x33, r24	; 51
+ 490:	83 b7       	in	r24, 0x33	; 51
+ 492:	8f 7e       	andi	r24, 0xEF	; 239
+ 494:	83 bf       	out	0x33, r24	; 51
 		Clear_Bit(TCCR0, COM01);
- 4d8:	83 b7       	in	r24, 0x33	; 51
- 4da:	8f 7d       	andi	r24, 0xDF	; 223
- 4dc:	83 bf       	out	0x33, r24	; 51
+ 496:	83 b7       	in	r24, 0x33	; 51
+ 498:	8f 7d       	andi	r24, 0xDF	; 223
+ 49a:	83 bf       	out	0x33, r24	; 51
 		break;
- 4de:	08 95       	ret
+ 49c:	08 95       	ret
 		case PWM_NonInverting:
 		Clear_Bit(TCCR0, COM00);
- 4e0:	83 b7       	in	r24, 0x33	; 51
- 4e2:	8f 7e       	andi	r24, 0xEF	; 239
- 4e4:	83 bf       	out	0x33, r24	; 51
+ 49e:	83 b7       	in	r24, 0x33	; 51
+ 4a0:	8f 7e       	andi	r24, 0xEF	; 239
+ 4a2:	83 bf       	out	0x33, r24	; 51
 		Set_Bit(TCCR0, COM01);
- 4e6:	83 b7       	in	r24, 0x33	; 51
- 4e8:	80 62       	ori	r24, 0x20	; 32
- 4ea:	83 bf       	out	0x33, r24	; 51
+ 4a4:	83 b7       	in	r24, 0x33	; 51
+ 4a6:	80 62       	ori	r24, 0x20	; 32
+ 4a8:	83 bf       	out	0x33, r24	; 51
 		OCR0 = ((Timer0_Bits * Dutycycle) / 100) - 1;
- 4ec:	96 2f       	mov	r25, r22
- 4ee:	80 e0       	ldi	r24, 0x00	; 0
- 4f0:	64 e6       	ldi	r22, 0x64	; 100
- 4f2:	70 e0       	ldi	r23, 0x00	; 0
- 4f4:	0e 94 8f 02 	call	0x51e	; 0x51e <__divmodhi4>
- 4f8:	61 50       	subi	r22, 0x01	; 1
- 4fa:	6c bf       	out	0x3c, r22	; 60
+ 4aa:	96 2f       	mov	r25, r22
+ 4ac:	80 e0       	ldi	r24, 0x00	; 0
+ 4ae:	64 e6       	ldi	r22, 0x64	; 100
+ 4b0:	70 e0       	ldi	r23, 0x00	; 0
+ 4b2:	0e 94 6e 02 	call	0x4dc	; 0x4dc <__divmodhi4>
+ 4b6:	61 50       	subi	r22, 0x01	; 1
+ 4b8:	6c bf       	out	0x3c, r22	; 60
 		break;
- 4fc:	08 95       	ret
+ 4ba:	08 95       	ret
 		case PWM_Inverting:
 		Set_Bit(TCCR0, COM00);
- 4fe:	83 b7       	in	r24, 0x33	; 51
- 500:	80 61       	ori	r24, 0x10	; 16
- 502:	83 bf       	out	0x33, r24	; 51
+ 4bc:	83 b7       	in	r24, 0x33	; 51
+ 4be:	80 61       	ori	r24, 0x10	; 16
+ 4c0:	83 bf       	out	0x33, r24	; 51
 		Set_Bit(TCCR0, COM01);
- 504:	83 b7       	in	r24, 0x33	; 51
- 506:	80 62       	ori	r24, 0x20	; 32
- 508:	83 bf       	out	0x33, r24	; 51
+ 4c2:	83 b7       	in	r24, 0x33	; 51
+ 4c4:	80 62       	ori	r24, 0x20	; 32
+ 4c6:	83 bf       	out	0x33, r24	; 51
 		OCR0 = Timer0_Bits - (((Timer0_Bits * Dutycycle) / 100) - 1);
- 50a:	96 2f       	mov	r25, r22
- 50c:	80 e0       	ldi	r24, 0x00	; 0
- 50e:	64 e6       	ldi	r22, 0x64	; 100
- 510:	70 e0       	ldi	r23, 0x00	; 0
- 512:	0e 94 8f 02 	call	0x51e	; 0x51e <__divmodhi4>
- 516:	81 e0       	ldi	r24, 0x01	; 1
- 518:	86 1b       	sub	r24, r22
- 51a:	8c bf       	out	0x3c, r24	; 60
- 51c:	08 95       	ret
+ 4c8:	96 2f       	mov	r25, r22
+ 4ca:	80 e0       	ldi	r24, 0x00	; 0
+ 4cc:	64 e6       	ldi	r22, 0x64	; 100
+ 4ce:	70 e0       	ldi	r23, 0x00	; 0
+ 4d0:	0e 94 6e 02 	call	0x4dc	; 0x4dc <__divmodhi4>
+ 4d4:	81 e0       	ldi	r24, 0x01	; 1
+ 4d6:	86 1b       	sub	r24, r22
+ 4d8:	8c bf       	out	0x3c, r24	; 60
+ 4da:	08 95       	ret
 
-0000051e <__divmodhi4>:
- 51e:	97 fb       	bst	r25, 7
- 520:	07 2e       	mov	r0, r23
- 522:	16 f4       	brtc	.+4      	; 0x528 <__divmodhi4+0xa>
- 524:	00 94       	com	r0
- 526:	07 d0       	rcall	.+14     	; 0x536 <__divmodhi4_neg1>
- 528:	77 fd       	sbrc	r23, 7
- 52a:	09 d0       	rcall	.+18     	; 0x53e <__divmodhi4_neg2>
- 52c:	0e 94 a3 02 	call	0x546	; 0x546 <__udivmodhi4>
- 530:	07 fc       	sbrc	r0, 7
- 532:	05 d0       	rcall	.+10     	; 0x53e <__divmodhi4_neg2>
- 534:	3e f4       	brtc	.+14     	; 0x544 <__divmodhi4_exit>
+000004dc <__divmodhi4>:
+ 4dc:	97 fb       	bst	r25, 7
+ 4de:	07 2e       	mov	r0, r23
+ 4e0:	16 f4       	brtc	.+4      	; 0x4e6 <__divmodhi4+0xa>
+ 4e2:	00 94       	com	r0
+ 4e4:	07 d0       	rcall	.+14     	; 0x4f4 <__divmodhi4_neg1>
+ 4e6:	77 fd       	sbrc	r23, 7
+ 4e8:	09 d0       	rcall	.+18     	; 0x4fc <__divmodhi4_neg2>
+ 4ea:	0e 94 82 02 	call	0x504	; 0x504 <__udivmodhi4>
+ 4ee:	07 fc       	sbrc	r0, 7
+ 4f0:	05 d0       	rcall	.+10     	; 0x4fc <__divmodhi4_neg2>
+ 4f2:	3e f4       	brtc	.+14     	; 0x502 <__divmodhi4_exit>
 
-00000536 <__divmodhi4_neg1>:
- 536:	90 95       	com	r25
- 538:	81 95       	neg	r24
- 53a:	9f 4f       	sbci	r25, 0xFF	; 255
- 53c:	08 95       	ret
+000004f4 <__divmodhi4_neg1>:
+ 4f4:	90 95       	com	r25
+ 4f6:	81 95       	neg	r24
+ 4f8:	9f 4f       	sbci	r25, 0xFF	; 255
+ 4fa:	08 95       	ret
 
-0000053e <__divmodhi4_neg2>:
- 53e:	70 95       	com	r23
- 540:	61 95       	neg	r22
- 542:	7f 4f       	sbci	r23, 0xFF	; 255
+000004fc <__divmodhi4_neg2>:
+ 4fc:	70 95       	com	r23
+ 4fe:	61 95       	neg	r22
+ 500:	7f 4f       	sbci	r23, 0xFF	; 255
 
-00000544 <__divmodhi4_exit>:
- 544:	08 95       	ret
+00000502 <__divmodhi4_exit>:
+ 502:	08 95       	ret
 
-00000546 <__udivmodhi4>:
- 546:	aa 1b       	sub	r26, r26
- 548:	bb 1b       	sub	r27, r27
- 54a:	51 e1       	ldi	r21, 0x11	; 17
- 54c:	07 c0       	rjmp	.+14     	; 0x55c <__udivmodhi4_ep>
+00000504 <__udivmodhi4>:
+ 504:	aa 1b       	sub	r26, r26
+ 506:	bb 1b       	sub	r27, r27
+ 508:	51 e1       	ldi	r21, 0x11	; 17
+ 50a:	07 c0       	rjmp	.+14     	; 0x51a <__udivmodhi4_ep>
 
-0000054e <__udivmodhi4_loop>:
- 54e:	aa 1f       	adc	r26, r26
- 550:	bb 1f       	adc	r27, r27
- 552:	a6 17       	cp	r26, r22
- 554:	b7 07       	cpc	r27, r23
- 556:	10 f0       	brcs	.+4      	; 0x55c <__udivmodhi4_ep>
- 558:	a6 1b       	sub	r26, r22
- 55a:	b7 0b       	sbc	r27, r23
+0000050c <__udivmodhi4_loop>:
+ 50c:	aa 1f       	adc	r26, r26
+ 50e:	bb 1f       	adc	r27, r27
+ 510:	a6 17       	cp	r26, r22
+ 512:	b7 07       	cpc	r27, r23
+ 514:	10 f0       	brcs	.+4      	; 0x51a <__udivmodhi4_ep>
+ 516:	a6 1b       	sub	r26, r22
+ 518:	b7 0b       	sbc	r27, r23
 
-0000055c <__udivmodhi4_ep>:
- 55c:	88 1f       	adc	r24, r24
- 55e:	99 1f       	adc	r25, r25
- 560:	5a 95       	dec	r21
- 562:	a9 f7       	brne	.-22     	; 0x54e <__udivmodhi4_loop>
- 564:	80 95       	com	r24
- 566:	90 95       	com	r25
- 568:	bc 01       	movw	r22, r24
- 56a:	cd 01       	movw	r24, r26
- 56c:	08 95       	ret
+0000051a <__udivmodhi4_ep>:
+ 51a:	88 1f       	adc	r24, r24
+ 51c:	99 1f       	adc	r25, r25
+ 51e:	5a 95       	dec	r21
+ 520:	a9 f7       	brne	.-22     	; 0x50c <__udivmodhi4_loop>
+ 522:	80 95       	com	r24
+ 524:	90 95       	com	r25
+ 526:	bc 01       	movw	r22, r24
+ 528:	cd 01       	movw	r24, r26
+ 52a:	08 95       	ret
 
-0000056e <_exit>:
- 56e:	f8 94       	cli
+0000052c <_exit>:
+ 52c:	f8 94       	cli
 
-00000570 <__stop_program>:
- 570:	ff cf       	rjmp	.-2      	; 0x570 <__stop_program>
+0000052e <__stop_program>:
+ 52e:	ff cf       	rjmp	.-2      	; 0x52e <__stop_program>

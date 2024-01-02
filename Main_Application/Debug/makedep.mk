@@ -38,6 +38,8 @@ MCAL\ADC\ADC_Interface.c
 
 MCAL\Communication\SPI\SPI_Interface.c
 
+MCAL\Communication\TWI\TWI_Interface.c
+
 MCAL\Communication\UART\UART_Interface.c
 
 MCAL\DIO\DIO_Interface.c
@@ -45,4 +47,6 @@ MCAL\DIO\DIO_Interface.c
 MCAL\Interrupt\Interrupt_Interface.c
 
 MCAL\Timers\Timer0\Timer0_Interface.c
+
+MCAL\Timers\Watchdog\WDT_Interface.c
 
