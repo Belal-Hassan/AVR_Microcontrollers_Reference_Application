@@ -4,7 +4,7 @@
 <div align="center">
   <a href="https://github.com/Belal-Hassan/Microcontrollers_Reference_Application">
   </a>
-<h3 align="center">Microcontrollers Reference</h3>
+<h3 align="center">AVR Microcontrollers Reference</h3>
   <p align="center">
     <br />
     <a href="https://github.com/Belal-Hassan/Microcontrollers_Reference_Application"><strong>Explore the docs »</strong></a>
@@ -41,8 +41,7 @@
 This embedded systems application serves as a foundational framework, providing essential drivers for a variety of devices to interface with the ATmega32A microcontroller, 
 including different types of displays, motors, etc. It covers the MCAL & HAL drivers, including peripheral libraries, modules libraries, and CPU configuration.
 Each peripheral driver (Under MCAL folder) consists of 4 files: Name_Addresses.h, Name_Configuration.h, Name_Private.h, Name_Interface.c. Each module driver 
-(Under HAL folder) consists of 3 files: Name_Configuration.h, Name_Private.h, Name_Interface.c. Its adaptability allows for easy integration with a broad 
-spectrum of microcontrollers just by changing the addresses, states, and statuses.
+(Under HAL folder) consists of 3 files: Name_Configuration.h, Name_Private.h, Name_Interface.c. Its adaptability allows for easy integration with most of the AVR family microcontrollers just by changing the addresses, states, and statuses.
 
 Note: A proteus simulation project is included in the project files.
 
