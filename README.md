@@ -2,19 +2,19 @@
 <hr>
 <br />
 <div align="center">
-  <a href="https://github.com/Belal-Hassan/Microcontrollers_Reference_Application">
+  <a href="https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application">
   </a>
 <h3 align="center">AVR Microcontrollers Reference</h3>
   <p align="center">
     <br />
-    <a href="https://github.com/Belal-Hassan/Microcontrollers_Reference_Application"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Belal-Hassan/Microcontrollers_Reference_Application">View Demo</a>
+    <a href="https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application">View Demo</a>
     ·
-    <a href="https://github.com/Belal-Hassan/Microcontrollers_Reference_Application/issues">Report Bug</a>
+    <a href="https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Belal-Hassan/Microcontrollers_Reference_Application/issues">Request Feature</a>
+    <a href="https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application/issues">Request Feature</a>
   </p>
 </div>
 <hr>
@@ -54,5 +54,5 @@ Note: A proteus simulation project is included in the project files.
 
 Belal - belal.34327@gmail.com, bilal.1021023@stemegypt.edu.eg
 
-Project Link: [https://github.com/Belal-Hassan/Microcontrollers_Reference_Application](https://github.com/Belal-Hassan/Microcontrollers_Reference_Application.git)
+Project Link: [https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application](https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application.git)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
