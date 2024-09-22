@@ -1,7 +1,7 @@
 /*
  * UART_Configuration.h
  *
- * Created: 11/26/2023 4:42:17 PM
+ * Created: 7/26/2024 11:11:49 PM
  *  Author: Belal
  */ 
 
@@ -9,58 +9,71 @@
 #ifndef UART_CONFIGURATION_H_
 #define UART_CONFIGURATION_H_
 
-#include <UART_Addresses.h>
+//#include <UART_Addresses.h>
+#include <Peripheral_Libraries.h>
 
-#define FREQ	160000
-#define I		7	
+bool receiveInterruptEnabled;
+bool transmitInterruptEnabled;
+bool dataSize9Bits;
 
-typedef enum
-{
-	UART_9600 = 96,
-	UART_38400 = 384,
-	UART_115200 = 1152
-}baudrate;
+typedef enum{
+	receiver = 0,
+	transmitter,
+	transceiver
+}transmode;
 
-typedef enum
-{
-	UART_Asynchronous = 0,
-	UART_Synchronous
-}mode;
+typedef enum{
+	asyncronousNormal = 0,
+	asyncronousDouble,
+	syncronous
+}syncmode;
 
-typedef enum
-{
-	UART_Disabled = 0,
-	UART_Even,
-	UART_Odd
+typedef enum{
+	disabledParity = 0,
+	evenParity,
+	oddParity
 }parity;
 
-typedef enum
-{
-	UART_1_Bit = 0,
-	UART_2_Bits
+typedef enum{
+	stop1bit = 0,
+	stop2bits
 }stopbits;
 
-typedef enum
-{
-	UART_5_Bits = 0,
-	UART_6_Bits,
-	UART_7_Bits,
-	UART_8_Bits,
-	UART_9_Bits
-}datalength;
+typedef enum{
+	size5bits = 0,
+	size6bits,
+	size7bits,
+	size8bits,
+	size9bits
+}datasize;
 
-typedef enum
-{
-	UART_NOK = 0,
-	UART_OK = 1
-}status;
+typedef enum{
+	noInterrupt = 0,
+	receiveInterrupt,
+	transmitInterrupt,
+	emptyInterrupt,
+	receiveTransmitInterrupt,
+	receiveEmptyInterrupt,
+	transmitEmptyInterrupt,
+	allInterrupts
+}interrupt;
 
-typedef enum
-{
-	UART_Interrupt = 0,
-	UART_NoInterrupt
-}istatus;
+typedef struct Interrupts{
+	void (*RxCallbackPointer)(void);
+	void (*TxCallbackPointer)(void);
+	void (*EmptyCallbackPointer)(void);
+}callbackInterrupts;
 
-#define Istatus UART_Interrupt
+typedef enum{
+	transmitManual = 0,
+	transmitAfterInterrupt
+}transmitAfter;
+
+typedef enum{
+	noError = 0,
+	frameError,
+	overRunError,
+	parityError
+}error;
 
 #endif /* UART_CONFIGURATION_H_ */
