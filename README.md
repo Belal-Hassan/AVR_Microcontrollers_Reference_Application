@@ -26,11 +26,8 @@
     <li>
       <a href="#About-The-Project">About The Project</a>
       <ul>
-        <li><a href="#Built-With">Built With</a></li>
+        <li><a href="#Navigation-Guide">Navigation Guide</a></li>
       </ul>
-    </li>
-    <li>
-      <a href="#Functions & Definitions">Functions & Definitions</a>
     </li>
     <li><a href="#Contact">Contact</a></li>
   </ol>
@@ -45,6 +42,10 @@ Each peripheral driver (Under MCAL folder) consists of 4 files: Name_Addresses.h
 
 Note: A proteus simulation project is included in the project files.
 
+### Navigation Guide
+
+<img src="Mind-Map.png" alt="Navigation Guide">
+
 ### Built With
 <img src="https://www.nicepng.com/png/detail/877-8775163_microchip-technology-logo.png" height = "40" width = "150" >
 
@@ -52,7 +53,7 @@ Note: A proteus simulation project is included in the project files.
 
 ## Contact
 
-Belal - belal.34327@gmail.com, bilal.1021023@stemegypt.edu.eg
+Belal - belal.hassan.kh@gmail.com, bilal.1021023@stemegypt.edu.eg
 
 Project Link: [https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application](https://github.com/Belal-Hassan/AVR_Microcontrollers_Reference_Application.git)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
