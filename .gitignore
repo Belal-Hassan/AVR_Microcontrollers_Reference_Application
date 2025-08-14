@@ -1,0 +1,71 @@
+## Ignore build outputs
+*.o
+*.elf
+*.hex
+*.map
+*.lss
+*.sym
+*.srec
+*.bin
+*.list
+*.mem
+*.d
+
+## Project files
+*.atsuo
+*.atsuo.*
+*.user
+*.user.*
+*.cache
+*.cache.*
+*.ncb
+*.opt
+*.suo
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+*.cproj.user
+
+## Backup & temp files
+*~
+.*.swp
+*.bak
+*.tmp
+*.log
+*.err
+
+## Output directories
+Debug/
+Release/
+dist/
+output/
+out/
+
+## Board-specific firmware
+*.dfu
+*.xpf
+*.jou
+
+## AVR-specific toolchain outputs
+avr-*
+AVR-*
+*.eep
+*.eep.hex
+
+## Simulation files
+*.wdb
+*.trc
+*.vcd
+*.fst
+
+## IDE settings
+.vs/
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore programmer/project settings that are user-specific
+Programmer.xml
+ProjectConfiguration.xml

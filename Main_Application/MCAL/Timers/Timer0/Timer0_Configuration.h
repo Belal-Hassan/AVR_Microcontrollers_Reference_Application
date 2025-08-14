@@ -12,7 +12,7 @@
 #include <Timer0_Addresses.h>
 
 #define MilliSec	1000
-#define System_FREQ	16000000/MilliSec
+#define System_FREQ	F_CPU/MilliSec
 #define Timer0_Bits	256
 #define OC0			3
 extern u32 Overflow_Cycle, CTC_Cycle;
